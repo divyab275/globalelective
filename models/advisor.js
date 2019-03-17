@@ -1,20 +1,19 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const student = sequelize.define('Student', {
+  const advisor = sequelize.define('Advisor', {
     id:{
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: DataTypes.INTEGER
       },
-    regID: DataTypes.STRING,
+    advisorID: DataTypes.STRING,
     name: DataTypes.STRING
   }, {});
-  student.associate = function(models) {
+  advisor.associate = function(models) {
     // associations can be defined here
-  models.Student.belongsTo(models.Department,{foreignKey:'deptID'})
-  models.Student.hasOne(models.Preference,{ foreignKey: 'studentID' })
+  models.Advisor.belongsTo(models.Department,{foreignKey:'deptID'})
 
   };
-  return student;
+  return advisor;
 };
