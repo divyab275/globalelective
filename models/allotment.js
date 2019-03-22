@@ -9,16 +9,16 @@ module.exports = (sequelize, DataTypes) => {
       },
     studentID:{
         type : DataTypes.STRING,
-        references:{
-            model : 'Student',
-            key : 'id'
-        }
+        
+    },
+    courseID:{
+        type : DataTypes.INTEGER
     }
   }, {});
   allotment.associate = function(models) {
     // associations can be defined here
-  models.Allotment.hasOne(models.Course,{foreignKey: 'courseID'})
+  models.Allotment.belongsTo(models.Course,{foreignKey: 'courseID',targetKey:'id'})
 
   };
-  return advisor;
+  return allotment;
 };
