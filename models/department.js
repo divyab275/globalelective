@@ -7,7 +7,9 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         type: DataTypes.INTEGER
       },
-    name: DataTypes.STRING
+    name: {type:   Sequelize.ENUM,
+    values: ['CSE', 'EEE', 'ECE','ME','CE','IND']
+    }
   }, {});
   department.associate = function(models) {
     // associations can be defined here
