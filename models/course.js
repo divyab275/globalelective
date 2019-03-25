@@ -9,7 +9,9 @@ module.exports = (sequelize, DataTypes) => {
       },
     courseID: DataTypes.STRING,
     name: DataTypes.STRING,
-    capacity:DataTypes.INTEGER
+    capacity:DataTypes.INTEGER,
+    filled:DataTypes.INTEGER
+    
   }, {});
   course.associate = function(models) {
     // associations can be defined here
