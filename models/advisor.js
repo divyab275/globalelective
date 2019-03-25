@@ -12,7 +12,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   advisor.associate = function(models) {
     // associations can be defined here
-  models.Advisor.belongsTo(models.Department,{foreignKey:'deptID'})
+  advisor.belongsTo(models.Department,{foreignKey:'deptID'})
+  advisor.belongsTo(models.User,{foreignKey:'advisorID',targetKey:'userID'})
 
   };
   return advisor;
