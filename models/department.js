@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         type: DataTypes.INTEGER
       },
-    name: {type:   Sequelize.ENUM,
+    name: {type:   DataTypes.ENUM,
     values: ['CSE', 'EEE', 'ECE','ME','CE','IND']
     }
   }, {});
