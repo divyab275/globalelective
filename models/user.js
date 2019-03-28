@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING
       },
       name: DataTypes.STRING(45),
-      password: DataTypes.STRING(45),
+      password: DataTypes.STRING(255),
       privilege: DataTypes.ENUM("Admin","Advisor","Student")
   }, {});
   user.associate = function(models) {
