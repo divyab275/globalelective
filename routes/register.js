@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var models = require('../../models/index');
+var models = require('../models');
 const Promise = require("bluebird");
 const saltRounds = 10;
 const bcrypt = require("bcrypt");
-const methods = require("../../methods/authentication");
+const methods = require("../methods/authentication");
 
 router.get('/',(req,res)=>{
     res.json({'api':"/register"})
@@ -22,15 +22,20 @@ router.post('/', function(req, res, next) {
 });
 
 router.post('/login',(req,res,next)=>{
+    console.log("Inside post /login")
     userID = req.body.userID;
     password = req.body.password;
     methods.authenticateUser(userID,password)
-    .then(res=>{
-        // console.log("Logged in")
-        res.redirect('http://localhost:3000/')
+    .then(result=>{
+        console.log("Logged in")
+     
+        res.send({ redirect: "/profile" })
+        // Not redirecting
     })
     .catch(err=>{
+       
         console.log(err)
+        res.status(400).json({success : false})
     })
 })
 
