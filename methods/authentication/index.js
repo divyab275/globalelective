@@ -84,7 +84,7 @@ authenticationMethods.authenticateUser = function(userID, password) {
               const user_id = result.dataValues.userID;
               var decoded = jwt.decode(token, { complete: true });
               console.log(user_id + " " + privilege);
-
+              
               resolve({
                 success: true,
                 token: token,

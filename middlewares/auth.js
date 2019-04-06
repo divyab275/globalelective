@@ -5,7 +5,11 @@ const secret = config.API_SECRET; //+ user's unique secret";
 function jwtVerifyToken(req, res, next)
 {
   console.log(req.headers);
-  const token = req.body.token ;
+  console.log(req.query.token)
+  
+  const token = req.headers.token || req.query.token ;
+  console.log(token)
+
   if (!token)
   {
     console.log('no token');
@@ -21,7 +25,8 @@ function jwtVerifyToken(req, res, next)
 
     // if everything good, save to request for use in other routes
     console.log('everything good');
-    // req.userId = decoded.id;
+    req.userId = decoded.id;
+    req.token = token
     req.decoded = decoded;
     return next();
   });

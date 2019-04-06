@@ -3,12 +3,8 @@ var router = express.Router();
 var auth = require('../../middlewares/auth')
 
 
-router.use('/advisor',function(req,res,next){
-    if(req.body.role=='advisor'){
-        next()
-    }
-},require('./advisor'))
-
+router.use('/advisor',require('./advisor'))
+router.use('/user',require('./user'))
 
 // router.use('/student',function(req,res,next){
 //     if(req.body.role=='student'){

@@ -25,11 +25,18 @@ router.post('/login',(req,res,next)=>{
     console.log("Inside post /login")
     userID = req.body.userID;
     password = req.body.password;
+    // req.userID = userID;
+    // req.
     methods.authenticateUser(userID,password)
     .then(result=>{
         console.log("Logged in")
-     
-        res.send({ redirect: "/profile" })
+        console.log(result.token)
+        
+        // req.token = result.token
+        // res.redirect(301,'/private/advisordashboard',{token:result.token})
+        // res.status(304).redirect('index',{token:result.token})
+        res.send(304)
+        res.render('index',{title:'Profile'})
         // Not redirecting
     })
     .catch(err=>{

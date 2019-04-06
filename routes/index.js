@@ -11,12 +11,24 @@ router.get('/profile',(req,res,next)=>{
   res.render('index',{title:'Profile'})
 })
 
+router.get('/admindashboard',(req,res,next)=>{
+  res.render('admindashboard',{title : 'Admin'})
+})
+
+
+
 console.log(auth)
 router.use('/users',require('./users'))
 router.use('/departments',require('./department'))
 router.use('/students',require('./student'))
 // router.use('/users',require('./user'))
 router.use('/register',require('./register'))
-router.use('/private',auth,require('./private'))
+router.use('/private',require('./private'))
+
+router.get('/private/advisordashboard',(req,res,next)=>{
+  res.render('index',{title : 'Advisor'})
+})
+
+// router.get('/private/admin')
 
 module.exports = router;

@@ -90,16 +90,16 @@
 
 <div id="addAdvisor" class="tabcontent">
   <h3>Add Advisor</h3>
-  <form>
+  <form method="POST" action="/private/user/addUser">
     <div class="group">
-      <input type="text"><span class="highlight"></span><span class="bar"></span>
+      <input type="text" name="username"><span class="highlight"></span><span class="bar"></span>
       <label>Username</label>
     </div>
     <div class="group">
-      <input type="password"><span class="highlight"></span><span class="bar"></span>
+      <input type="password" name="password"><span class="highlight"></span><span class="bar"></span>
       <label>Password</label>
     </div>
-    <button type="button" class="button buttonBlue">Login
+    <button type="submit" type="button" class="button buttonBlue">Add Advisor
       <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
     </button>
   </form>
