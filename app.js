@@ -38,7 +38,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-app.listen(5000,function(){
-	// console.log('GLUTTON is listening');
-})
+
 module.exports = app;

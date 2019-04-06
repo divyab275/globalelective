@@ -41,6 +41,13 @@ $ripples.on('click.Ripples', function(e) {
 
 });
 
+
+$ripples.on('animationend webkitAnimationEnd mozAnimationEnd oanimationend MSAnimationEnd', function(e) {
+    $(this).removeClass('is-active');
+});
+
+});
+
 $('#loginButton').click(()=>{
   console.log(axios)
   console.log("Inside function")
@@ -70,12 +77,7 @@ $('#loginButton').click(()=>{
 //   
 // })
 })
-
-$ripples.on('animationend webkitAnimationEnd mozAnimationEnd oanimationend MSAnimationEnd', function(e) {
-    $(this).removeClass('is-active');
-});
-
-});</script>
+</script>
   <link rel="javascript" type="text/javascript" href="js/main.js">
   </head>
   <body>
