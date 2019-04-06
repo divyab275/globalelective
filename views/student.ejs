@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script
+  src="http://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="javascript" type="text/javascript" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+  <script>
+    var a=1, msg;
+    if(a==1)
+      msg="Allotment is still under process"
+    else if(a==0)
+      msg="You have been allotted to the course"
+
+   function openCity(evt, cityName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+      
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+      
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+      
+        // Show the current tab, and add an "active" class to the link that opened the tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
+
+function myFunction() {
+var selectedArr = (document.getElementById("first").value);
+var countries = document.getElementById('second'); 
+var arrEU = ["England","Germany","France", "Ireland","Poland","Italy"];
+var arrAsia = ["China","South Korea","Singapore","Pakistan","India"];
+var arrNAmerica = ["United States","Mexico"];
+ 
+document.getElementById('second').innerHTML = "";
+ 
+if (selectedArr == "EU"){ 
+arrEU.forEach(eufunc);
+}
+ 
+else if (selectedArr == "Asia"){
+arrAsia.forEach(Asiafunc);
+}
+ 
+else { 
+arrNAmerica.forEach(NAmericafunc);
+}
+ 
+function eufunc(array_element){
+var seloptions = document.createElement('option'); 
+seloptions.innerHTML = array_element;
+seloptions.value = array_element;
+countries.appendChild(seloptions);
+}
+
+function Asiafunc(array_element){ 
+var seloptions = document.createElement('option');
+seloptions.innerHTML = array_element;
+seloptions.value = array_element;
+countries.appendChild(seloptions);
+}
+
+function NAmericafunc(array_element){
+var seloptions = document.createElement('option');
+seloptions.innerHTML = array_element;
+seloptions.value = array_element;
+countries.appendChild(seloptions);
+}
+}
+</script>
+</head>
+
+
+
+<body>
+    <style>
+        * {box-sizing: border-box}
+
+/* Style the tab */
+.tab {
+  font-size: 25px;
+  float: left;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  width: 30%;
+  height: 100vh;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  display: block;
+  background-color: inherit;
+  color: black;
+  padding: 22px 16px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  float: right;
+  padding-top: 30px;
+  padding-left: 30px;
+  /*padding: 0px 12px;*/
+  border: 3px solid #ccc;
+  width: 70%;
+  border-left: none;
+  height: 1000px;
+}
+
+.button{
+  height: 60px;
+  width: 150px;
+}
+
+.div_demo {
+  padding-top: 3px;
+  padding-left: 15px;
+  margin-top: 0px;
+  background: #2B801E00;
+  height: 500px; 
+  width:50%;
+  border-radius: 15px;
+  font-size:22px;
+  color:#fff;
+} 
+
+
+</style>
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'setPreference')">Set Preference</button>
+  <button class="tablinks" onclick="openCity(event, 'viewAllottedCourse')">View Allotted Course</button>
+</div>
+
+<div id="a">
+  <div id="setPreference" class="tabcontent">
+    <h3>Select your preferences</h3>
+      <form>
+
+        <div class="div_demo">
+          <div><font color="black">First preference:</font>
+          <select id="first" onChange="myFunction()">
+            <option>Select your option</option>
+              <option value="EU">Europe</option>
+              <option value="Asia">Asia</option>
+              <option value="NAmerica">North America</option>
+          </select>
+        </div>
+        <div><font color="black">Second preference:</font> 
+          <select id="second">
+            <option>Select your option</option>
+          </select>
+        </div>
+
+         <div><font color="black">Third preference   :  </font> 
+          <select id="third">
+            <option>Select your option</option>
+          </select>
+        </div>
+
+         <div><font color="black">Fourth preference   :  </font> 
+          <select id="fourth">
+            <option>Select your option</option>
+          </select>
+        </div>
+           <div><font color="black">Fifth preference:</font> 
+          <select id="fifth">
+            <option>Select your option</option>
+          </select>
+        </div>
+
+         <div><font color="black">Sixth preference   :  </font> 
+          <select id="sixth">
+            <option>Select your option</option>
+          </select>
+        </div>
+           <div><font color="black">Seventh preference:</font> 
+          <select id="seventh">
+            <option>Select your option</option>
+          </select>
+        </div>
+
+         <div><font color="black">Eighth preference   :  </font> 
+          <select id="eighth">
+            <option>Select your option</option>
+          </select>
+    </div>
+      <div><font color="black">Ninth preference:</font> 
+          <select id="ninth">
+            <option>Select your option</option>
+          </select>
+        </div>
+
+         <div><font color="black">Tenth preference   :  </font> 
+          <select id="tenth">
+            <option>Select your option</option>
+          </select>
+    </div>
+
+        <div>
+
+        <button type="button" class="button buttonBlue">Submit
+            <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<div id="viewAllottedCourse" class="tabcontent">
+  <h3>Allotted Course</h3>
+    <script>
+        document.write(msg)
+    </script>  
+</div>
+
+</body>
+</html>
