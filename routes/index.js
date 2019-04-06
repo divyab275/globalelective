@@ -8,8 +8,13 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/profile',(req,res,next)=>{
-  res.render('index',{title:'Profile'})
-})
+  res.render('admindashboard',{title:'Profile'})
+});
+
+router.get('/student',(req,res,next)=>{
+  res.render('student',{title:'Setting preference'})
+});
+
 
 console.log(auth)
 router.use('/users',require('./users'))
