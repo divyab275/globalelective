@@ -18,6 +18,15 @@ router.post('/addDept', function(req, res, next) {
  	})
 });
  
+router.post('/getDepts', function(req, res, next) {
+	models.Department.getDepts().then(result=>{
+		res.json(result)
+	})
+	.catch(err=>{
+		res.send("error")
+	})
+});
+
  
 
 router.put('/:id', function(req, res, next) {

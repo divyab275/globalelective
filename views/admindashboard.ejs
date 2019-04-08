@@ -29,7 +29,8 @@
         // Show the current tab, and add an "active" class to the link that opened the tab
         document.getElementById(cityName).style.display = "block";
         evt.currentTarget.className += " active";
-      }</script>
+      }
+      </script>
 </head>
 
 <body>
@@ -90,14 +91,25 @@
 
 <div id="addAdvisor" class="tabcontent">
   <h3>Add Advisor</h3>
-  <form method="POST" action="/private/user/addUser">
+  <form method="POST" action="/private/user/addAdvisor">
     <div class="group">
-      <input type="text" name="username"><span class="highlight"></span><span class="bar"></span>
-      <label>Username</label>
+      Name<input type="text" name="advname"><span class="highlight"></span><span class="bar"></span>
     </div>
     <div class="group">
-      <input type="password" name="password"><span class="highlight"></span><span class="bar"></span>
-      <label>Password</label>
+      Department<select>
+        <option>Mechanical</option>
+        <option>Electrical & Electronics</option>
+        <option>Electronics & Communication</option>
+        <option>Civil</option>
+        <option>Computer Science</option>
+        <option>Industrial</option>
+      </select>
+    </div>
+    <div class="group">
+      Username<input type="text" name="username"><span class="highlight"></span><span class="bar"></span>
+    </div>
+    <div class="group">
+      Password<input type="password" name="password"><span class="highlight"></span><span class="bar"></span>
     </div>
     <button type="submit" type="button" class="button buttonBlue">Add Advisor
       <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
