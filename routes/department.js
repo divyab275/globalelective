@@ -17,15 +17,7 @@ router.post('/addDept', function(req, res, next) {
  		res.send("error")
  	})
 });
- 
-router.post('/getDepts', function(req, res, next) {
-	models.Department.getDepts().then(result=>{
-		res.json(result)
-	})
-	.catch(err=>{
-		res.send("error")
-	})
-});
+
 
  
 

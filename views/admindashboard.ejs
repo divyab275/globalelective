@@ -93,33 +93,52 @@
   <h3>Add Advisor</h3>
   <form method="POST" action="/private/user/addAdvisor">
     <div class="group">
-      Name<input type="text" name="advname"><span class="highlight"></span><span class="bar"></span>
+      Name<input type="text" name="advname">
     </div>
     <div class="group">
-      Department<select>
-        <option>Mechanical</option>
-        <option>Electrical & Electronics</option>
-        <option>Electronics & Communication</option>
-        <option>Civil</option>
-        <option>Computer Science</option>
-        <option>Industrial</option>
+      Department<br>
+      <select>
+          <% for(var i=0;i<data.length;i++) { %>
+        <option value=<%=data[i].id%>><%= data[i].name %> </option>
+        <% } %>
       </select>
     </div>
     <div class="group">
-      Username<input type="text" name="username"><span class="highlight"></span><span class="bar"></span>
+      Username<input type="text" name="username">
     </div>
     <div class="group">
-      Password<input type="password" name="password"><span class="highlight"></span><span class="bar"></span>
+      Password<input type="password" name="password">
     </div>
     <button type="submit" type="button" class="button buttonBlue">Add Advisor
-      <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+     
     </button>
   </form>
 </div>
 
 <div id="addCourse" class="tabcontent">
-  <h3>addCourse</h3>
-  <p>Paris is the capital of France.</p> 
+  <h3>Add Course</h3>
+  <form>
+  <div class="group">
+      Course Name<input type="text" name="coursename">
+    </div>
+    <div class="group">
+        Course Code<input type="text" name="coursecode">
+      </div> 
+      <div class="group">
+          Offering Department<br>
+          <select>
+              <% for(var i=0;i<data.length;i++) { %>
+            <option value=<%=data[i].id%>><%= data[i].name %> </option>
+            <% } %>
+          </select>
+        </div>
+        <div class="group">
+            Capacity<input type="number" name="capacity">
+          </div> 
+          <button type="submit" type="button" class="button buttonBlue">Add Course
+     
+            </button>
+  </form>
 </div>
 
 <div id="allotment" class="tabcontent">

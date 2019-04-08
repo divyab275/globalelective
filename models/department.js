@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER
       },
     name: {type:   DataTypes.ENUM,
-    values: ['CSE', 'EEE', 'ECE','ME','CE','IND']
+    values: ['Computer Science', 'Electrical & Electronics', 'Electronics & Communication','Mechanical','Civil','Industrial']
     }
   }, {});
   department.associate = function(models) {

@@ -30,8 +30,15 @@ router.get('/admindashboard',(req,res,next)=>{
 
 
   methods.department.getDepts().then(function(result){
-    console.log({"data":result})
-    res.render('admindashboard', {"data":result,"title":'Admin Dashboard'});
+    //console.log("From routes");
+    var dict={"data":result}
+    //console.log(dict["data"])
+    let depts = [];
+  for (let i=0; i<dict["data"].length; i+=1) {
+   depts.push(dict["data"][i].dataValues);
+  }
+  //console.log(depts);
+    res.render('admindashboard', {"data":depts,"title":'Admin Dashboard'});
   }).catch(function(err){
       res.json({
           "success":false,
