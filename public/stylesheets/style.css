@@ -115,6 +115,13 @@ input:checked + .slider:before {
 .slider.round {
   border-radius: 34px;
 }
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+table, th, td {
+  border: 1px solid #4E4D4D;
+}
 
 .slider.round:before {
   border-radius: 50%;
