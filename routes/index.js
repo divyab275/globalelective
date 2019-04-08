@@ -19,17 +19,7 @@ router.get('/student',(req,res,next)=>{
 
 
 router.get('/admindashboard',(req,res,next)=>{
-  // methods.department.getDepts()
-  // .then(result=>{
-  //     console.log(result[0])
-  //     res.render('admindashboard', {title:'Admin Dashboard'});  
-  // })
-  // .catch(err=>{
-  //     res.json(err)
-  // })
-
-
-  methods.department.getDepts().then(function(result){
+   methods.department.getDepts().then(function(result){
     //console.log("From routes");
     var dict={"data":result}
     //console.log(dict["data"])
