@@ -13,6 +13,11 @@ router.get('/profile',(req,res,next)=>{
   res.render('admindashboard',{title:'Profile'})
 });
 
+
+router.get('/advisor',(req,res,next)=>{
+  res.render('advisor',{title:'Advisor Dash'})
+});
+
 router.get('/student',(req,res,next)=>{
   res.render('student',{title:'Setting preference'})
 });
