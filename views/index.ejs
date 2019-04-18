@@ -3,8 +3,18 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+
+
+    <script>
+    var logout = function(){
+      window.location.href = '/logout'
+    }
+    
+    
+    </script>
   </head>
   <body>
+    <button id="logout" style="align-items:right" onclick="logout()">Logout</button>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
   </body>

@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/addStudent', function(req, res, next) {
  	models.Student.create(req.body).then(result=>{
- 		res.json(result)
+ 		
  	})
  	.catch(err=>{
  		res.json(err)

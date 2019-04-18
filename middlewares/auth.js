@@ -7,7 +7,7 @@ function jwtVerifyToken(req, res, next)
   console.log(req.headers);
   console.log(req.query.token)
   
-  const token = req.headers.token || req.query.token ;
+  const token = req.headers.token || req.query.token || req.session.token;
   console.log(token)
 
   if (!token)

@@ -23,6 +23,7 @@ router.post('/', function(req, res, next) {
 
 router.post('/login',(req,res,next)=>{
     console.log("Inside post /login")
+    console.log(req.body)
     userID = req.body.userID;
     password = req.body.password;
     // req.userID = userID;
@@ -31,13 +32,11 @@ router.post('/login',(req,res,next)=>{
     .then(result=>{
         console.log("Logged in")
         console.log(result.token)
+        req.token = result.token
+        req.session.token = result.token
+        res.redirect('/private/advisordashboard')
+        // res.render('advisor',{title:"sakhi"})
         
-        // req.token = result.token
-        // res.redirect(301,'/private/advisordashboard',{token:result.token})
-        // res.status(304).redirect('index',{token:result.token})
-        res.send(304)
-        res.render('index',{title:'Profile'})
-        // Not redirecting
     })
     .catch(err=>{
        

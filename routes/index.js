@@ -6,11 +6,25 @@ var models=require('../models')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  if(req.session.token){
+    //Token already present , destroy
+    req.session.destroy(function(){
+      console.log("user logged out.")
+   });
+  }
+  
   res.render('login', { title: 'Login' });
 });
 
 router.get('/profile',(req,res,next)=>{
-  res.render('admindashboard',{title:'Profile'})
+  
+  if(req.session.token){
+    console.log("token present");
+    res.render('index',{title:'Profile'}) 
+  }else{
+    console.log("No token")
+  }
+ 
 });
 
 
@@ -21,6 +35,13 @@ router.get('/advisor',(req,res,next)=>{
 router.get('/student',(req,res,next)=>{
   res.render('student',{title:'Setting preference'})
 });
+
+router.get('/logout',(req,res)=>{
+  req.session.destroy(function(){
+    console.log("user logged out.")
+ });
+ res.redirect('/');
+})
 
 
 router.get('/admindashboard',(req,res,next)=>{
@@ -52,10 +73,12 @@ router.use('/departments',require('./department'))
 router.use('/students',require('./student'))
 // router.use('/users',require('./user'))
 router.use('/register',require('./register'))
-router.use('/private',require('./private'))
+router.use('/private',auth,require('./private'))
 
 router.get('/private/advisordashboard',(req,res,next)=>{
-  res.render('index',{title : 'Advisor'})
+  res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+  res.render('index',{title:'advisor'})
+  
 })
 
 // router.get('/private/admin')
