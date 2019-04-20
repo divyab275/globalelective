@@ -16,6 +16,10 @@ router.get('/', function(req, res, next) {
     models.Advisor.create()
  })
 
+router.get('/dashboard',(req,res,next)=>{
+   res.render('index',{title:'HAHAH'});
+})
+
 // router.post('/addStudent', function(req, res, next) {
 //  	models.Student.create(req.body).then(result=>{
 //  		res.json(result)
@@ -29,14 +33,5 @@ router.get('/', function(req, res, next) {
 
  })
 
-// router.put('/:id', function(req, res, next) {
- 
-// });
- 
- 
 
-// router.delete('/:id', function(req, res, next) {
- 
-// });
- 
 module.exports = router;

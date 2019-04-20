@@ -57,6 +57,56 @@ authenticationMethods.registerAdvisor = function(info) {
   });
 };
 
+authenticationMethods.registerStudent = function(info) {
+  return new Promise(function(resolve, reject) {
+    bcrypt.hash(info.password, saltRounds).then(hash=>{
+      return sequelize
+      .transaction(function(t) {
+        var user = {}
+       user.userID = info.regID
+       user.name = info.name
+       user.password = hash
+       user.privilege = 3
+       console.log(hash)
+        return models.User
+          .create(user, { transaction: t })
+          .then(function(user) {
+          // console.log(user)
+           var student = {}
+           student.regID = info.regID
+           student.name = info.name
+           student.deptID = info.deptID
+           student.cgpa = info.cgpa
+            return models.Student
+              .create(student, {
+                transaction: t
+              })
+              .then(function(result) {
+                // console.log("Successful")
+                resolve({ success: true });
+              })
+              .catch(function(err) {
+                reject({ success: "false1" });
+              });
+          })
+          .catch(function(err) {
+            reject({ success: err });
+          });
+      })
+      .then(function(result) {
+        console.log("SUCCESS")
+        resolve({ success: true });
+      })
+      .catch(function(err) {
+        reject({ success: "false3" });
+      });
+    })
+    .catch(err=>{
+      reject({success : "false4"});
+    })
+  });
+};
+
 authenticationMethods.authenticateUser = function(userID, password) {
   return new Promise(function(resolve, reject) {
     models.User

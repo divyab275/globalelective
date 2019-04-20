@@ -25,10 +25,19 @@ function jwtVerifyToken(req, res, next)
 
     // if everything good, save to request for use in other routes
     console.log('everything good');
+    console.log(decoded);
     req.userId = decoded.id;
     req.token = token
     req.decoded = decoded;
+    // console.log(req.body);
+    if(req.url.startsWith('/advisor')){
+      if(decoded.privilege == 'Advisor')
+        return next();
+      else
+         return res.status(500).send({ auth : false, message : 'Not enough privileges.' });
+    }
     return next();
+   
   });
 }
 module.exports = jwtVerifyToken;

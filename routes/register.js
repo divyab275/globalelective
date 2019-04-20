@@ -34,8 +34,13 @@ router.post('/login',(req,res,next)=>{
         console.log(result.token)
         req.token = result.token
         req.session.token = result.token
-        res.redirect('/private/advisordashboard')
-        // res.render('advisor',{title:"sakhi"})
+        req.session.privilege = result.privilege
+        console.log(result.privilege)
+        if(result.privilege == 'Advisor')
+            res.redirect('/private/advisordashboard')
+        else if(result.privilege == "Student")
+            res.redirect('/profile')
+        
         
     })
     .catch(err=>{

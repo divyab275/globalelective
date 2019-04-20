@@ -33,7 +33,7 @@ router.get('/advisor',(req,res,next)=>{
 });
 
 router.get('/student',(req,res,next)=>{
-  res.render('student',{title:'Setting preference'})
+  res.render('student',{title:'Setting preference',data : ['C01','C02',"C03"]})
 });
 
 router.get('/logout',(req,res)=>{
@@ -44,26 +44,7 @@ router.get('/logout',(req,res)=>{
 })
 
 
-router.get('/admindashboard',(req,res,next)=>{
-   methods.department.getDepts().then(function(result){
-    //console.log("From routes");
-    var dict={"data":result}
-    //console.log(dict["data"])
-    let depts = [];
-  for (let i=0; i<dict["data"].length; i+=1) {
-   depts.push(dict["data"][i].dataValues);
-  }
-  //console.log(depts);
-    res.render('admindashboard', {"data":depts,"title":'Admin Dashboard'});
-  }).catch(function(err){
-      res.json({
-          "success":false,
-          "data":err
-      })
-  })
-  //console.log(res)
-                     
-})
+
 
 
 
@@ -76,11 +57,30 @@ router.use('/register',require('./register'))
 router.use('/private',auth,require('./private'))
 
 router.get('/private/advisordashboard',(req,res,next)=>{
-  res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+ 
   res.render('index',{title:'advisor'})
   
 })
-
+router.get('/private/admindashboard',(req,res,next)=>{
+  methods.department.getDepts().then(function(result){
+   //console.log("From routes");
+   var dict={"data":result}
+   //console.log(dict["data"])
+   let depts = [];
+ for (let i=0; i<dict["data"].length; i+=1) {
+  depts.push(dict["data"][i].dataValues);
+ }
+ //console.log(depts);
+   res.render('admindashboard', {"data":depts,"title":'Admin Dashboard'});
+ }).catch(function(err){
+     res.json({
+         "success":false,
+         "data":err
+     })
+ })
+ //console.log(res)
+                    
+})
 // router.get('/private/admin')
 
 module.exports = router;

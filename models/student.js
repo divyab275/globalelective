@@ -8,7 +8,8 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER
       },
     regID: DataTypes.STRING,
-    name: DataTypes.STRING
+    name: DataTypes.STRING,
+    cgpa : DataTypes.REAL
   }, {});
   student.associate = function(models) {
     // associations can be defined here

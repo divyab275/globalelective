@@ -10,6 +10,7 @@
   <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="javascript" type="text/javascript" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
   <script>
+    let arr = ['First','Second','Third','Fourth','Fifth']
     var a=1, msg;
     if(a==1)
       msg="Allotment is still under process"
@@ -162,30 +163,37 @@ countries.appendChild(seloptions);
 <div id="a">
   <div id="setPreference" class="tabcontent">
     <h3>Select your preferences</h3>
-      <form>
+      <form method="POST" action = '/private/student/preference'>
 
         <div class="div_demo">
-          <div><font color="black">First preference:</font>
-          <select id="first" onChange="myFunction()">
+            <div><font color="black" name="preference1">First preference   :  </font> 
+              <select id="first" name = "preference1">
+                <option>Select your option</option>
+                <% for(var i=0; i < data.length; i++) { %>
+                  <option value ="<%= data[i] %>"><%= data[i] %></option>
+              <% } %> 
+              </select>
+            </div>
+        <div><font color="black" >Second preference:</font> 
+          <select id="second" name="preference2">
             <option>Select your option</option>
-              <option value="EU">Europe</option>
-              <option value="Asia">Asia</option>
-              <option value="NAmerica">North America</option>
-          </select>
-        </div>
-        <div><font color="black">Second preference:</font> 
-          <select id="second">
-            <option>Select your option</option>
+             <% for(var i=0; i < data.length; i++) { %>
+                <option value ="<%= data[i] %>"><%= data[i] %></option>
+            <% } %>  
+
           </select>
         </div>
 
          <div><font color="black">Third preference   :  </font> 
-          <select id="third">
-            <option>Select your option</option>
+          <select id="third" name="preference3">
+            <option>Select your option</option>  <!--Change the value to be courseid primary key-->
+            <% for(var i=0; i < data.length; i++) { %>
+              <option value ="<%= data[i] %>"><%= data[i] %></option>
+          <% } %> 
           </select>
         </div>
-
-         <div><font color="black">Fourth preference   :  </font> 
+        
+         <!-- <div><font color="black">Fourth preference   :  </font> 
           <select id="fourth">
             <option>Select your option</option>
           </select>
@@ -222,16 +230,19 @@ countries.appendChild(seloptions);
           <select id="tenth">
             <option>Select your option</option>
           </select>
-    </div>
+    </div> -->
 
-        <div>
+         <div>
 
-        <button type="button" class="button buttonBlue">Submit
+        <button type="submit" class="button buttonBlue">Submit
             <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
         </button>
       </div>
     </div>
   </form>
+
+
+
 </div>
 
 
@@ -241,6 +252,6 @@ countries.appendChild(seloptions);
         document.write(msg)
     </script>  
 </div>
-
+</div>
 </body>
 </html>
