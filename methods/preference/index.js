@@ -22,4 +22,55 @@ const Op = Sequelize.Op;
     
 }
 
+preferenceMethods.getPreferences = function(){
+  return new Promise((resolve,reject) => {
+    models.Preference.findAll({
+      group : ['studentID']
+    })
+    .then(res=>{
+      resolve(res)
+    })
+    .catch(err=>{
+      reject(err)
+    })
+  })
+}
+
+preferenceMethods.getStudentPreferences = function(studentID){
+  return new Promise((resolve,reject) => {
+      models.Preference.findAll()
+      .then(res => {
+        // console.log(res)
+        var pref = {}
+        var cids = []
+        res.forEach(element => {
+          if (!(element.dataValues.studentID in pref)){
+            pref[element.dataValues.studentID] = [];
+            // pref[element.dataValues.studentID].push(element.dataValues.courseID)
+            pref[element.dataValues.studentID][element.dataValues.preferenceLevel - 1] = element.dataValues.courseID;
+          }
+          else
+          pref[element.dataValues.studentID][element.dataValues.preferenceLevel - 1] = element.dataValues.courseID;
+        });
+        // var cids = [];
+        // res.forEach(element => {
+        //   cids[element.dataValues.preferenceLevel - 1] = element.dataValues.courseID;
+        // });
+        preferences = []  
+        studentID.forEach(student => {
+          // preferences[student] = pref[student]
+          // console.log(student)
+          var studObj = new Object();
+          studObj[student] = pref[student]
+          preferences.push(studObj)
+          // console.log(pref[stude])
+        });
+        resolve(preferences)
+      })
+      .catch(err => {
+        reject(err)
+      })
+  })
+}
+
 module.exports = preferenceMethods

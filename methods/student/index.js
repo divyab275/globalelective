@@ -27,4 +27,24 @@ studentMethods.getStudentID = function(userID){
     
 }
 
+studentMethods.getAllStudentsDesc = function(){
+    return new Promise((resolve,reject) =>{
+        models.Student.findAll({
+            order : [['cgpa','DESC']]
+        })
+        .then(res => {
+            var students = []
+            res.forEach(element => {
+                students.push(element.dataValues.id)
+            });
+            resolve(students)
+        })
+        .catch(err => {
+            reject(err)
+        })
+    })
+}
+
+
+
 module.exports = studentMethods;

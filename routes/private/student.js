@@ -27,9 +27,17 @@ router.post('/preference',(req,res)=>{
             }
             Preference.push(prefObj);
         }
-        console.log(Preference);
+        methods.preference.addStudentPreference(Preference)
+        .then(re2 => {
+            console.log(re2)
+        })
+        .catch(er2 => {
+            console.log(er2)
+        })
    })
-    .catch()
+    .catch(err => {
+        console.log(err)
+    })
     
 })
 

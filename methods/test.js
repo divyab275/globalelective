@@ -12,6 +12,7 @@ userMethods = require('./user');
 courseMethods = require('./course');
 studentMethods = require('./student');
 preferenceMethods = require('./preference');
+allotmentMethods = require('./allotment')
 
 // userID = "sdasd";
 // name = "sakhi";
@@ -135,14 +136,46 @@ preferenceMethods = require('./preference');
 //     console.log(err);
 // })
 
-preferenceMethods.addStudentPreference(
-    [ { courseID: '1', studentID: 6, preferenceLevel: 1 },
-  { courseID: '2', studentID: 6, preferenceLevel: 2 },
-  { courseID: '1', studentID: 6, preferenceLevel: 3 } ]
-)
-.then(res=>{
+// preferenceMethods.addStudentPreference(
+//     [ { courseID: '2', studentID: 7, preferenceLevel: 1 },
+//   { courseID: '3', studentID: 7, preferenceLevel: 2 },
+//   { courseID: '1', studentID: 7, preferenceLevel: 3 } ]
+// )
+// .then(res=>{
+//     console.log(res);
+// })
+// .catch(err=>{
+//     console.log(err);
+// })
+
+// studentMethods.getAllStudentsDesc()
+// .then(res => {
+//    console.log(res)
+// })
+// .catch(err => {
+//     console.log(err)
+// })
+
+// preferenceMethods.getStudentPreferences([7,6])
+// .then(res => {
+//     console.log(res)
+// })
+// .catch(err => {
+//     console.log(err)
+// })
+
+// courseMethods.getAllCourses()
+// .then(res => {
+//     console.log(res)
+// })
+// .catch(err => {
+//     console.log(err)
+// })
+
+allotmentMethods.allot()
+.then(res =>{
     console.log(res);
 })
-.catch(err=>{
-    console.log(err);
+.catch(err => {
+    console.log(err)
 })
