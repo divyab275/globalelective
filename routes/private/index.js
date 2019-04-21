@@ -14,4 +14,6 @@ router.use('/student',require('./student'))
 //     }
 // },require('./student'))
 
+
+
 module.exports = router;

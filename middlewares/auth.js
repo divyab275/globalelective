@@ -26,9 +26,10 @@ function jwtVerifyToken(req, res, next)
     // if everything good, save to request for use in other routes
     console.log('everything good');
     console.log(decoded);
-    req.userId = decoded.id;
+    req.userID = decoded.id;
     req.token = token
     req.decoded = decoded;
+  
     // console.log(req.body);
     if(req.url.startsWith('/advisor')){
       if(decoded.privilege == 'Advisor')

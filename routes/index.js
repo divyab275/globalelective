@@ -33,7 +33,15 @@ router.get('/advisor',(req,res,next)=>{
 });
 
 router.get('/student',(req,res,next)=>{
-  res.render('student',{title:'Setting preference',data : ['C01','C02',"C03"]})
+  console.log(req.session)
+  methods.student.allowedCourses()
+  .then(re => {
+    res.render('student',{title:'Setting preference',data : re})
+  })
+  .catch(er => {
+
+  })
+  
 });
 
 router.get('/logout',(req,res)=>{

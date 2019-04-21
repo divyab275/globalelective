@@ -13,6 +13,7 @@ courseMethods = require('./course');
 studentMethods = require('./student');
 preferenceMethods = require('./preference');
 allotmentMethods = require('./allotment')
+departmentMethods = require('./department')
 
 // userID = "sdasd";
 // name = "sakhi";
@@ -172,10 +173,26 @@ allotmentMethods = require('./allotment')
 //     console.log(err)
 // })
 
-allotmentMethods.allot()
-.then(res =>{
-    console.log(res);
+// allotmentMethods.allot()
+// .then(res =>{
+//     console.log(res);
+// })
+// .catch(err => {
+//     console.log(err)
+// })
+
+studentMethods.allowedCourses('stud3')
+.then(res => {
+    console.log(res)
 })
 .catch(err => {
     console.log(err)
 })
+
+// departmentMethods.getCoursesElligibleForDept(2)
+// .then( res=> {
+//     console.log(res)
+// })
+// .catch( err => {
+//     console.log(err)
+// })

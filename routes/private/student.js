@@ -3,9 +3,17 @@ var router = express.Router();
 var models = require('../../models');
 var methods = require('../../methods');
 
-router.get('/',(req,res)=>{
-    res.json({Success : true});
-})
+router.get('/',(req,res,next)=>{
+    console.log(req.userID)
+    methods.student.allowedCourses(req.userID)
+    .then(re => {
+      res.render('student',{title:'Setting preference',data : re})
+    })
+    .catch(er => {
+  
+    })
+    
+  });
 
 router.post('/preference',(req,res)=>{
     console.log(req.body);

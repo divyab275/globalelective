@@ -2,6 +2,7 @@ const Promise = require('bluebird');
 
 const models = require('../../models');
 // const obtainInformation = require('./obtainInformation');
+const methods = require('../../methods')
 const Sequelize = require('sequelize');
 var { sequelize } = models;
 
@@ -45,6 +46,44 @@ studentMethods.getAllStudentsDesc = function(){
     })
 }
 
+
+studentMethods.allowedCourses = function(studentID){
+
+    return new Promise((resolve,reject) => {
+        models.Student.findOne({
+            raw : true,
+            where : {
+                regID : studentID
+            },
+            attributes : ['deptID']
+        })
+        .then(res => {
+            console.log(res)
+            var deptID = res.deptID;
+            console.log(methods)
+            methods.department.getCoursesElligibleForDept(deptID)
+            .then(re => {
+                resolve(re)
+            })
+            .catch(er => {
+                reject(er)
+            })
+            
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    })
+
+    // return new Promise((resolve,reject) => {
+    //     models.Student.findAll()
+    //     .then(res => {
+    //         resolve(['C01','C02',"C03"]);
+    //     })
+    //     .catch()
+
+    // })
+}
 
 
 module.exports = studentMethods;

@@ -170,7 +170,7 @@ countries.appendChild(seloptions);
               <select id="first" name = "preference1">
                 <option>Select your option</option>
                 <% for(var i=0; i < data.length; i++) { %>
-                  <option value ="<%= data[i] %>"><%= data[i] %></option>
+                  <option value ="<%= data[i] %>"><%= data[i].name %></option>
               <% } %> 
               </select>
             </div>
