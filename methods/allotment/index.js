@@ -4,22 +4,24 @@ const models = require('../../models');
 // const obtainInformation = require('./obtainInformation');
 const Sequelize = require('sequelize');
 var { sequelize } = models;
-const methods = require('../../methods');
-
+// const methods = require('../../methods');
+const studentMethods =  require('../../methods/student')
+const preferenceMethods = require('../../methods/preference')
+const courseMethods =  require('../../methods/course')
 const allotmentMethods = {};
 const Op = Sequelize.Op;
 
 allotmentMethods.allot = function() {
     return new Promise((resolve,reject) => {
-        methods.student.getAllStudentsDesc()
+        studentMethods.getAllStudentsDesc()
         .then(res2 => {
             //Students Arranged in Descending Order in res
             // console.log(res2)
-            methods.preference.getStudentPreferences(res2)
+            preferenceMethods.getStudentPreferences(res2)
             .then(res => {
                 //[{studentid1: ['cid1','cid2']},{studentid2: ['cid1','cid2']},{studentid3: ['cid1','cid2']}] array returned
                 //Students are sorted in cgpa desc
-                methods.course.getAllCourses()
+                courseMethods.getAllCourses()
                 .then(re => {
                     //re is an object with key course id and value array[capacity,filled]
                     var course_list = re;
@@ -64,5 +66,68 @@ allotmentMethods.allot = function() {
         })
     })
 }
+
+allotmentMethods.bulkCreate = function(allotments)  {
+    return new Promise((resolve,reject)=>{
+        models.Allotment.bulkCreate(allotments).then(() => { 
+            return models.Allotment.findAll({
+                raw : true
+            });
+          }).then(res => {
+            resolve(res)
+          }).catch(err => {
+              reject(err);
+          })
+    })
+}
+
+allotmentMethods.getAllAllotments = function(){
+    return new Promise((resolve,reject) => {
+        models.Allotment.findAll({
+            raw : true
+        })
+        .then(res => {
+            resolve(res);
+        })
+        .catch(err => {
+            reject(err)
+        })
+    })
+}
+
+allotmentMethods.getAllotmentList = function(){
+    return new Promise((resolve,reject) => {
+        studentMethods.getAllStudentDetails()
+        .then(res => {
+            students = res
+            courseMethods.getAllCourseDetails()
+            .then(re => {
+                courses = re
+                allotmentMethods.getAllAllotments()
+                .then(r => {
+                    allot = []
+                    r.forEach(allotment => {
+                        var x = students[allotment.studentID];
+                        x.push(courses[allotment.courseID][0])
+                        x.push(courses[allotment.courseID][1])
+                        allot.push(x)
+                    })
+                    resolve(allot)
+                })
+                .catch(e => {
+                    reject(e)
+                })
+            })
+            .catch(er => {
+                reject(er)
+            })
+        })
+        .catch(err => {
+            reject(err)
+        })
+    })
+}
+
+
 
 module.exports = allotmentMethods

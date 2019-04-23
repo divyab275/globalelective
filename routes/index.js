@@ -32,17 +32,7 @@ router.get('/advisor',(req,res,next)=>{
   res.render('advisor',{title:'Advisor Dash'})
 });
 
-router.get('/student',(req,res,next)=>{
-  console.log(req.session)
-  methods.student.allowedCourses()
-  .then(re => {
-    res.render('student',{title:'Setting preference',data : re})
-  })
-  .catch(er => {
 
-  })
-  
-});
 
 router.get('/logout',(req,res)=>{
   req.session.destroy(function(){
@@ -60,6 +50,8 @@ console.log(auth)
 router.use('/users',require('./users'))
 router.use('/departments',require('./department'))
 router.use('/students',require('./student'))
+router.use('/allotment',require('./allotment'))
+
 // router.use('/users',require('./user'))
 router.use('/register',require('./register'))
 router.use('/private',auth,require('./private'))
@@ -90,5 +82,16 @@ router.get('/private/admindashboard',(req,res,next)=>{
                     
 })
 // router.get('/private/admin')
+
+router.get('/allotmentlist',(req,res) => {
+  methods.allotment.getAllotmentList()
+  .then(re => {
+    res.render('allotmentlist',{title : "Allotment",data : re})
+  })
+  .catch(er => {
+
+  })
+  
+})
 
 module.exports = router;

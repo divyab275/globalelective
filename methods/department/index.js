@@ -23,12 +23,14 @@ departmentMethods.getDepts = () => {
   };
 
   departmentMethods.getCoursesElligibleForDept = function(deptID) {
+    deptid = [];
+    deptid[0] = deptID
     return new Promise((resolve,reject) => {
       models.Course.findAll({
         raw : true,
         where : {
           deptID : {
-            [Op.notIn]: deptID
+            [Op.notIn]: deptid
           }   
         },
         attributes : ['id','name','courseID','name']

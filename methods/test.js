@@ -173,6 +173,14 @@ departmentMethods = require('./department')
 //     console.log(err)
 // })
 
+// courseMethods.getAllCourseDetails()
+// .then(res => {
+//     console.log(res)
+// })
+// .catch(err => {
+//     console.log(err)
+// })
+
 // allotmentMethods.allot()
 // .then(res =>{
 //     console.log(res);
@@ -181,7 +189,39 @@ departmentMethods = require('./department')
 //     console.log(err)
 // })
 
-studentMethods.allowedCourses('stud3')
+// studentMethods.allowedCourses('stud4')
+// .then(res => {
+//     console.log(res)
+// })
+// .catch(err => {
+//     console.log(err)
+// })
+
+// departmentMethods.getCoursesElligibleForDept([2])
+// .then( res=> {
+//     console.log(res)
+// })
+// .catch( err => {
+//     console.log(err)
+// })
+
+// allotmentMethods.bulkCreate([{courseID:1,studentID:6},{courseID:2,studentID:7},{courseID:1,studentID:5}])
+// .then(res => {
+//     console.log(res)
+// })
+// .catch(err => {
+//     console.log(err)
+// })
+
+// allotmentMethods.getAllAllotments()
+// .then(res => {
+//     console.log(res)
+// })
+// .catch(err => {
+//     console.log(err)
+// })
+
+allotmentMethods.getAllotmentList()
 .then(res => {
     console.log(res)
 })
@@ -189,10 +229,10 @@ studentMethods.allowedCourses('stud3')
     console.log(err)
 })
 
-// departmentMethods.getCoursesElligibleForDept(2)
-// .then( res=> {
+// studentMethods.getAllStudentDetails()
+// .then(res => {
 //     console.log(res)
 // })
-// .catch( err => {
+// .catch(err => {
 //     console.log(err)
 // })

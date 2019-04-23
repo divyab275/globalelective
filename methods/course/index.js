@@ -44,4 +44,27 @@ courseMethods.getAllCourses = function(){
   })
 }
 
+
+courseMethods.getAllCourseDetails = function(){
+  return new Promise((resolve,reject)=>{
+    models.Course.findAll({
+      raw : true,
+      attributes : ['id','courseID','name']
+    })
+    .then(res => {
+      var re = {}
+      res.forEach(element => {
+        var x = []
+        x.push(element.courseID)
+        x.push(element.name)
+        re[element.id] = x
+      });
+      resolve(re);
+    })
+    .catch(err => {
+      reject(err);
+    })
+  })
+}
+
   module.exports = courseMethods;

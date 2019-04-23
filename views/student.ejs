@@ -170,7 +170,7 @@ countries.appendChild(seloptions);
               <select id="first" name = "preference1">
                 <option>Select your option</option>
                 <% for(var i=0; i < data.length; i++) { %>
-                  <option value ="<%= data[i] %>"><%= data[i].name %></option>
+                  <option value ="<%= data[i].id %>"><%= data[i].name %> ---- <%= data[i].courseID %></option>
               <% } %> 
               </select>
             </div>
@@ -178,8 +178,8 @@ countries.appendChild(seloptions);
           <select id="second" name="preference2">
             <option>Select your option</option>
              <% for(var i=0; i < data.length; i++) { %>
-                <option value ="<%= data[i] %>"><%= data[i] %></option>
-            <% } %>  
+              <option value ="<%= data[i].id %>"><%= data[i].name %> ---- <%= data[i].courseID %></option>
+               <% } %>  
 
           </select>
         </div>
@@ -187,8 +187,9 @@ countries.appendChild(seloptions);
          <div><font color="black">Third preference   :  </font> 
           <select id="third" name="preference3">
             <option>Select your option</option>  <!--Change the value to be courseid primary key-->
+            
             <% for(var i=0; i < data.length; i++) { %>
-              <option value ="<%= data[i] %>"><%= data[i] %></option>
+              <option value ="<%= data[i].id %>"><%= data[i].name %> ---- <%= data[i].courseID %></option>              
           <% } %> 
           </select>
         </div>
