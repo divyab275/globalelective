@@ -2,6 +2,7 @@ const Promise = require('bluebird');
 
 const models = require('../../models');
 // const obtainInformation = require('./obtainInformation');
+studentMethods = require('../student')
 const Sequelize = require('sequelize');
 var { sequelize } = models;
 
@@ -70,6 +71,31 @@ preferenceMethods.getStudentPreferences = function(studentID){
       .catch(err => {
         reject(err)
       })
+  })
+}
+
+preferenceMethods.hasMarkedPreference = function(studentID){
+  return new Promise((resolve,reject) => {
+      studentMethods.getStudentID(studentID)
+      .then(res => {
+        studID = res.dataValues.id;
+        models.Preference.findAll({
+          raw : true,
+          where : {
+            studentID : studID
+          }
+        })
+        .then(res => {
+          resolve(res)
+        })
+        .catch(err => {
+          reject(err)
+        })
+      })
+      .catch(err =>{
+        reject(err)
+      })
+      
   })
 }
 

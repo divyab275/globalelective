@@ -10,12 +10,24 @@
   <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="javascript" type="text/javascript" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
   <script>
-    let arr = ['First','Second','Third','Fourth','Fifth']
     var a=1, msg;
-    if(a==1)
-      msg="Allotment is still under process"
-    else if(a==0)
-      msg="You have been allotted to the course"
+    student_marked_prefernce = false
+    // if(a==1)
+    //   msg="Allotment is still under process"
+    // else if(a==0)
+    //   msg="You have been allotted to the course"
+    console.log("<%= student %>")
+    // methods.student.hasMarkedPreference(student.studentID)
+    // .then(res => {
+    //   if(res.length==0)
+    //     student_marked_prefernce = false
+    //   else{
+    //     document.getElementById('a').display = "none"
+    //   }
+    // })
+    // .catch(err => {
+
+    // })
 
    function openCity(evt, cityName) {
         // Declare all variables
@@ -38,48 +50,8 @@
         evt.currentTarget.className += " active";
       }
 
-function myFunction() {
-var selectedArr = (document.getElementById("first").value);
-var countries = document.getElementById('second'); 
-var arrEU = ["England","Germany","France", "Ireland","Poland","Italy"];
-var arrAsia = ["China","South Korea","Singapore","Pakistan","India"];
-var arrNAmerica = ["United States","Mexico"];
- 
-document.getElementById('second').innerHTML = "";
- 
-if (selectedArr == "EU"){ 
-arrEU.forEach(eufunc);
-}
- 
-else if (selectedArr == "Asia"){
-arrAsia.forEach(Asiafunc);
-}
- 
-else { 
-arrNAmerica.forEach(NAmericafunc);
-}
- 
-function eufunc(array_element){
-var seloptions = document.createElement('option'); 
-seloptions.innerHTML = array_element;
-seloptions.value = array_element;
-countries.appendChild(seloptions);
-}
 
-function Asiafunc(array_element){ 
-var seloptions = document.createElement('option');
-seloptions.innerHTML = array_element;
-seloptions.value = array_element;
-countries.appendChild(seloptions);
-}
 
-function NAmericafunc(array_element){
-var seloptions = document.createElement('option');
-seloptions.innerHTML = array_element;
-seloptions.value = array_element;
-countries.appendChild(seloptions);
-}
-}
 </script>
 </head>
 
@@ -159,7 +131,11 @@ countries.appendChild(seloptions);
   <button class="tablinks" onclick="openCity(event, 'setPreference')">Set Preference</button>
   <button class="tablinks" onclick="openCity(event, 'viewAllottedCourse')">View Allotted Course</button>
 </div>
-
+<div>
+  <button style="float : right">
+    <a href = '/logout'>Logout</a>
+  </button>
+</div>
 <div id="a">
   <div id="setPreference" class="tabcontent">
     <h3>Select your preferences</h3>
@@ -186,7 +162,7 @@ countries.appendChild(seloptions);
 
          <div><font color="black">Third preference   :  </font> 
           <select id="third" name="preference3">
-            <option>Select your option</option>  <!--Change the value to be courseid primary key-->
+            <option>Select your option</option>  
             
             <% for(var i=0; i < data.length; i++) { %>
               <option value ="<%= data[i].id %>"><%= data[i].name %> ---- <%= data[i].courseID %></option>              

@@ -11,9 +11,8 @@ router.get('/', function(req, res, next) {
 
  
  router.post('/addUser',function(req,res,next){
-     console.log(req.body)
-     console.log(req.token)
-     info = {"userID":'userID2',"name":'name2',"password":'password',"privilege":2}
+   
+     info = req.body
     methods.user.addUser(info)
     .then(result=>{
         res.json(result)

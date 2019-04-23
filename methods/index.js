@@ -7,5 +7,7 @@ methods.course  = require('./course')
 methods.student  = require('./student')
 methods.preference = require('./preference')
 methods.allotment = require('./allotment')
+methods.authentication = require('./authentication')
+
 
 module.exports = methods;

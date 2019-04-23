@@ -31,6 +31,12 @@ function jwtVerifyToken(req, res, next)
     req.decoded = decoded;
   
     // console.log(req.body);
+    if(req.url.startsWith('/admin')){
+      if(decoded.privilege == 'Admin')
+        return next();
+      else
+      return res.status(500).send({ auth : false, message : 'Not enough privileges.' });
+    }
     if(req.url.startsWith('/advisor')){
       if(decoded.privilege == 'Advisor')
         return next();

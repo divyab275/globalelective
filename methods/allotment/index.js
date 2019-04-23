@@ -13,7 +13,12 @@ const Op = Sequelize.Op;
 
 allotmentMethods.allot = function() {
     return new Promise((resolve,reject) => {
-        studentMethods.getAllStudentsDesc()
+        models.Allotment.destroy({
+            where : {},
+            truncate : true
+        })
+        .then(res => {
+            studentMethods.getAllStudentsDesc()
         .then(res2 => {
             //Students Arranged in Descending Order in res
             // console.log(res2)
@@ -38,21 +43,32 @@ allotmentMethods.allot = function() {
                            console.log(studentID, "not specified any preference")
                        }
                        else{
+                        //    console.log(studObj)
                         for(var i=0;i<courses.length;i++){
                             var course = courses[i];
                              if(course_list[course][1]<course_list[course][0]){
                                  course_list[course][1]++;
                                  var stud_allot={}
-                                 stud_allot[studentID] = course;
+                                 stud_allot['studentID'] = studentID;
+                                 stud_allot['courseID'] = course;
                                  allotment.push(stud_allot);
-                                 // console.log(stud_allot)
+                                 console.log(stud_allot)
                                  break;
                              }
                         }
                        }
                        
-                    
-                       resolve(allotment)
+                    //    console.log(allotment)
+                     allotmentMethods.bulkCreate(allotment)
+                     .then(res => {
+
+                        resolve(res)
+                     })
+                     .catch(err => {
+                        reject(err)
+                     })
+            
+                       
                     });
                 })
                 .catch(er =>{
@@ -64,6 +80,11 @@ allotmentMethods.allot = function() {
         .catch(erro => {
             reject(erro)
         })
+        })
+        .catch(err => {
+            
+        })
+        
     })
 }
 

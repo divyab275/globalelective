@@ -36,7 +36,9 @@ router.post('/login',(req,res,next)=>{
         req.session.token = result.token
         req.session.privilege = result.privilege
         console.log(result.privilege)
-        if(result.privilege == 'Advisor')
+        if(result.privilege == 'Admin')
+            res.redirect('/private/admin/dashboard')
+        else if(result.privilege == 'Advisor')
             res.redirect('/private/advisordashboard')
         else if(result.privilege == "Student")
             res.redirect('/private/student')

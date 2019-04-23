@@ -1,0 +1,53 @@
+var express = require('express');
+var router = express.Router();
+var models = require('../../models');
+var methods = require('../../methods')
+
+router.get('/', function(req, res, next) {
+ res.send("Hello")
+});
+ 
+
+router.post('/addAdvisor',(req,res,next) => {
+    console.log(req.body)
+    methods.authentication.registerAdvisor(req.body)
+    .then(re => {
+        res.send(re)
+    })
+    .catch(er => {
+        res.send(er)
+    })
+})
+
+router.post('/addCourse',(req,res,next) => {
+    console.log(req.body)
+    methods.course.addCourse(req.body)
+    .then(re => {
+        res.send(re)
+    })
+    .catch(er => {
+        res.send(er)
+    })
+})
+
+router.get('/allot',(req,res,next) =>{
+    methods.allotment.allot()
+    .then(re => {
+        res.redirect('/allotmentList')
+    })
+    .catch(er => {
+        res.send(er)
+    })
+})
+
+router.post('/changePassword',(req,res,next) => {
+    methods.user.changePassword(req.body.userID,req.body.password)
+    .then(re => {
+        res.redirect('/private/admin/dashboard') //Make redirection to another page saying password change successful
+    })
+    .catch(er => {
+        res.send({success:false,error:er})
+    })
+})
+
+module.exports = router

@@ -4,20 +4,16 @@ var models = require('../../models');
 var methods = require('../../methods');
 
 router.get('/',(req,res,next)=>{
-    // console.log(req.userID)
-    // console.log(methods)
     methods.student.allowedCourses(req.userID)
     .then(re => {
-        // console.log(re)
-    //   res.render('student',{title:'Setting preference',data : re})
-        res.render('student',{title:'Setting preference',data : re})
+        // instead check if student has set preferences if yes , then return preference list as data
+        //Else send as data the courses that can be allocated
+        res.render('student',{title:'Setting preference',data : re,student : req.userID}) 
     })
     .catch(er => {
         console.log(er)
     })
-    // res.render('student',{title:'Setting preference',data : [ { id: 1, name: 'CN', courseID: 'C01' },
-    // { id: 2, name: 'COA', courseID: 'C02' },
-    // { id: 3, name: 'MOS', courseID: 'C03' } ]})
+    
   });
 
 router.post('/preference',(req,res)=>{

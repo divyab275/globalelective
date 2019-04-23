@@ -221,13 +221,13 @@ departmentMethods = require('./department')
 //     console.log(err)
 // })
 
-allotmentMethods.getAllotmentList()
-.then(res => {
-    console.log(res)
-})
-.catch(err => {
-    console.log(err)
-})
+// allotmentMethods.getAllotmentList()
+// .then(res => {
+//     console.log(res)
+// })
+// .catch(err => {
+//     console.log(err)
+// })
 
 // studentMethods.getAllStudentDetails()
 // .then(res => {
@@ -236,3 +236,48 @@ allotmentMethods.getAllotmentList()
 // .catch(err => {
 //     console.log(err)
 // })
+
+// preferenceMethods.hasMarkedPreference("stud3")
+// .then(res => {
+//     console.log(res)
+// })
+// .catch(err => {
+//     console.log(err)
+// })
+
+
+// authMethods.registerAdmin({
+//     userID : 'admin',
+//     name : 'admin',
+//     password : 'admin'
+// })
+// .then(res => {
+//     console.log(res)
+// })
+// .catch(err => {
+//     console.log(err)
+// })
+
+// departmentMethods.getDepts()
+// .then(res => {
+//     console.log(res)
+// })
+// .catch(err => {
+//     console.log(err)
+// })
+
+// userMethods.changePassword('stud1','stud1')
+// .then(res => {
+//     console.log(res)
+// })
+// .catch(err => {
+//     console.log(err)
+// })
+
+courseMethods.getCourses()
+.then(res => {
+    console.log(res)
+})
+.catch(err => {
+    console.log(err)
+})

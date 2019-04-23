@@ -56,6 +56,40 @@ authenticationMethods.registerAdvisor = function(info) {
     })
   });
 };
+authenticationMethods.registerAdmin = function(info) {
+  return new Promise(function(resolve, reject) {
+    bcrypt.hash(info.password, saltRounds).then(hash=>{
+      return sequelize
+      .transaction(function(t) {
+        var user = {}
+       user.userID = info.userID
+       user.name = info.name
+       user.password = hash
+       user.privilege = 1
+      //  console.log(hash)
+        return models.User
+          .create(user, { transaction: t })
+          .then(function(user) {
+          // console.log(user)
+           
+          })
+          .catch(function(err) {
+            reject({ success: err });
+          });
+      })
+      .then(function(result) {
+        console.log("SUCCESS")
+        resolve({ success: true });
+      })
+      .catch(function(err) {
+        reject({ success: "false3" });
+      });
+    })
+    .catch(err=>{
+      reject({success : "false4"});
+    })
+  });
+};
 
 authenticationMethods.registerStudent = function(info) {
   return new Promise(function(resolve, reject) {

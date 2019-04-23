@@ -85,6 +85,8 @@ studentMethods.allowedCourses = function(studentID){
     // })
 }
 
+
+
 studentMethods.getAllStudentDetails = function(){
     return new Promise((resolve,reject)=>{
       models.Student.findAll({

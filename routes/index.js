@@ -61,7 +61,7 @@ router.get('/private/advisordashboard',(req,res,next)=>{
   res.render('index',{title:'advisor'})
   
 })
-router.get('/private/admindashboard',(req,res,next)=>{
+router.get('/private/admin/dashboard',(req,res,next)=>{
   methods.department.getDepts().then(function(result){
    //console.log("From routes");
    var dict={"data":result}
@@ -70,8 +70,15 @@ router.get('/private/admindashboard',(req,res,next)=>{
  for (let i=0; i<dict["data"].length; i+=1) {
   depts.push(dict["data"][i].dataValues);
  }
- //console.log(depts);
-   res.render('admindashboard', {"data":depts,"title":'Admin Dashboard'});
+ console.log(depts);
+   methods.course.getCourses()
+   .then(re => {
+     console.log(re)
+    res.render('admindashboard', {"data":depts,title : 'Admin Dashboard',course :re});
+   })
+   .catch(er => {
+     console.log(er)
+   })
  }).catch(function(err){
      res.json({
          "success":false,

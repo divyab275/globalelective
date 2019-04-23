@@ -88,28 +88,30 @@
   <button class="tablinks" onclick="openCity(event, 'changePasswordStudent')">Change Password-Student</button>
   <button class="tablinks" onclick="openCity(event, 'viewCourse')">View/Edit Courses</button>
 </div>
-
+<div>
+  <button style="float:right" ><a href='/logout'>Logout</a></button>
+</div>
 <div id="addAdvisor" class="tabcontent">
   <h3>Add Advisor</h3>
-  <form method="POST" action="/private/user/addAdvisor">
+  <form method="POST" action="/private/admin/addAdvisor">
     <div class="group">
-      Name<input type="text" name="advname">
+      Name<input type="text" name="name">
     </div>
     <div class="group">
       Department<br>
-      <select>
+      <select name="deptID">
           <% for(var i=0;i<data.length;i++) { %>
         <option value=<%=data[i].id%>><%= data[i].name %> </option>
         <% } %>
       </select>
     </div>
     <div class="group">
-      Username<input type="text" name="username">
+      Username<input type="text" name="userID">
     </div>
     <div class="group">
       Password<input type="password" name="password">
     </div>
-    <button type="submit" type="button" class="button buttonBlue">Add Advisor
+    <button type="submit"  class="button buttonBlue">Add Advisor
      
     </button>
   </form>
@@ -117,16 +119,16 @@
 
 <div id="addCourse" class="tabcontent">
   <h3>Add Course</h3>
-  <form>
+  <form method="POST" action = "/private/admin/addCourse">
   <div class="group">
-      Course Name<input type="text" name="coursename">
+      Course Name<input type="text" name="nmae">
     </div>
     <div class="group">
-        Course Code<input type="text" name="coursecode">
+        Course Code<input type="text" name="courseID">
       </div> 
       <div class="group">
           Offering Department<br>
-          <select>
+          <select name="deptID">
               <% for(var i=0;i<data.length;i++) { %>
             <option value=<%=data[i].id%>><%= data[i].name %> </option>
             <% } %>
@@ -136,6 +138,7 @@
             Capacity<input type="number" name="capacity">
           </div> 
           <button type="submit" type="button" class="button buttonBlue">Add Course
+
      
             </button>
   </form>
@@ -159,38 +162,38 @@
       <span class="slider round"></span>
     </label>
     <br><br>
-    <button type="button" class="button buttonBlue">Perform Allotment
+    <button type="button" class="button buttonBlue" ><a href="/private/admin/allot">Perform Allotment</a>
      </button>
   
 </div>
 <div id="changePasswordAdvisor" class="tabcontent">
     <h3>Change Password - Advisor</h3>
-    <form>
-        <div class="group">
-            Username<input type="text" name="aname">
-        </div>
-        <div class="group">
-              New Password<input type="password" name="np">
-        </div> 
-        <div class="group">
-            Confirm Password<input type="password" name="cp">
+    <form method="POST" action = "/private/admin/changePassword">
+      <div class="group">
+          Username<input type="text" name="userID">
+      </div>
+      <div class="group">
+            New Password<input type="password" name="password">
       </div> 
-      <button type="submit" type="button" class="button buttonBlue">Submit
-     
-        </button>
-    </form>
+      <div class="group">
+          Confirm Password<input type="password" name="conf_password">
+    </div> 
+    <button type="submit" type="button" class="button buttonBlue">Submit
+   
+      </button>
+  </form>
 </div>
 <div id="changePasswordStudent" class="tabcontent">
     <h3>Change Password - Student</h3>
-    <form>
+    <form method="POST" action = "/private/admin/changePassword">
         <div class="group">
-            Username<input type="text" name="sname">
+            Username<input type="text" name="userID">
         </div>
         <div class="group">
-              New Password<input type="password" name="snp">
+              New Password<input type="password" name="password">
         </div> 
         <div class="group">
-            Confirm Password<input type="password" name="scp">
+            Confirm Password<input type="password" name="conf_password">
       </div> 
       <button type="submit" type="button" class="button buttonBlue">Submit
      
@@ -203,20 +206,20 @@
       <tr>
         <th>Course Code</th>
         <th>Course Name</th>
-        <th></th>
+        <th>Edit </th>
+        <th>Delete</th>
       </tr>
-      <tr>
-          <td> CS 305</td>
-          <td>Web Technology</td>
-          <td><button type="submit" type="button" class="button buttonBlue">Edit Course
-            </button></td>
-        </tr>
+      <% for(var i=0;i<course.length;i++) { %>
         <tr>
-            <td> CS 306</td>
-            <td>Natural Language Processing </td>
-            <td><button type="submit" type="button" class="button buttonBlue">Edit Course
-              </button></td>
-            </tr>
+          <form method = "POST" action="/private/admin/deleteCourse">
+              <td><%= course[i].courseID %></td>
+          <td><%= course[i].name %></td>
+          <td><img src="../img/pencil-edit-button.png"></td>
+          <td><a href = "/private/admin/deleteCourse"><img src="../img/pencil-edit-button.png" ></a></td>
+          </form>
+          
+        </tr>
+        <% } %>
     </table>
 </div>
 </body>

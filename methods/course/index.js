@@ -67,4 +67,18 @@ courseMethods.getAllCourseDetails = function(){
   })
 }
 
+courseMethods.getCourses = function(){
+  return new Promise((resolve,reject) => {
+    models.Course.findAll({
+      raw : true
+    })
+    .then(res => {
+      resolve(res)
+    })
+    .catch(err => {
+      reject(err)
+    })
+  })
+}
+
   module.exports = courseMethods;
