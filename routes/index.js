@@ -55,6 +55,7 @@ router.use('/allotment',require('./allotment'))
 // router.use('/users',require('./user'))
 router.use('/register',require('./register'))
 router.use('/private',auth,require('./private'))
+//router.use('/private',require('./private'))
 
 router.get('/private/advisordashboard',(req,res,next)=>{
  

@@ -7,6 +7,16 @@ router.get('/', function(req, res, next) {
  res.send("Hello")
 });
  
+router.post('/addAdmin',(req,res,next) => {
+    console.log(req.body)
+    methods.authentication.registerAdmin(req.body)
+    .then(re => {
+        res.send(re)
+    })
+    .catch(er => {
+        res.send(er)
+    })
+})
 
 router.post('/addAdvisor',(req,res,next) => {
     console.log(req.body)
@@ -21,7 +31,9 @@ router.post('/addAdvisor',(req,res,next) => {
 
 router.post('/addCourse',(req,res,next) => {
     console.log(req.body)
-    methods.course.addCourse(req.body)
+    var new1=req.body
+    new1['filled']=0
+    methods.course.addCourse(new1)
     .then(re => {
         res.send(re)
     })
