@@ -10,6 +10,7 @@ const Op = Sequelize.Op;
 
 
 courseMethods.addCourse = (info) => {
+    info.filled = 0;
     return new Promise((resolve, reject) => {
       models.Course.create(info)
         .then((result) => {
