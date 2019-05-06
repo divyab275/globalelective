@@ -22,7 +22,8 @@ router.post('/addAdvisor',(req,res,next) => {
     console.log(req.body)
     methods.authentication.registerAdvisor(req.body)
     .then(re => {
-        res.send(re)
+        //req.flash('success_msg', 'Advisor added successfully!');
+        res.redirect('/private/admin/dashboard')
     })
     .catch(er => {
         res.send(er)
@@ -46,7 +47,7 @@ router.post('/addCourse',(req,res,next) => {
     new1['filled']=0
     methods.course.addCourse(new1)
     .then(re => {
-        res.send(re)
+        res.redirect('/private/admin/dashboard')
     })
     .catch(er => {
         res.send(er)
