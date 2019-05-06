@@ -57,19 +57,17 @@ allotmentMethods.allot = function() {
                              }
                         }
                        }
-                       
-                    //    console.log(allotment)
-                     allotmentMethods.bulkCreate(allotment)
-                     .then(res => {
-
-                        resolve(res)
-                     })
-                     .catch(err => {
-                        reject(err)
-                     })
-            
-                       
                     });
+                   
+                    console.log(allotment)
+                  allotmentMethods.bulkCreate(allotment)
+                  .then(res => {
+
+                     resolve(res)
+                  })
+                  .catch(err => {
+                     reject(err)
+                  })
                 })
                 .catch(er =>{
                     reject(er)

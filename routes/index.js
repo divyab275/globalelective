@@ -58,8 +58,8 @@ router.use('/private',auth,require('./private'))
 //router.use('/private',require('./private'))
 
 router.get('/private/advisordashboard',(req,res,next)=>{
- 
-  res.render('index',{title:'advisor'})
+ //get all sudent data 
+  res.render('advisor',{title:'advisor'})
   
 })
 router.get('/private/admin/dashboard',(req,res,next)=>{
