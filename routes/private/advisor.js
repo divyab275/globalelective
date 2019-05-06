@@ -44,20 +44,57 @@ router.get('/dashboard',(req,res,next)=>{
   depts.push(dict["data"][i].dataValues);
  }
  console.log(depts);
-   methods.course.getCourses()
-   .then(re => {
-     console.log(re)
-    res.render('advisor', {"data":depts,title : 'Advisor'});
-   })
-   .catch(er => {
-     console.log(er)
-   })
- }).catch(function(err){
+   // methods.course.getCourses()
+   // .then(re => {
+   //   console.log(re)
+   //  // res.render('advisor', {"data":depts,title : 'Advisor'});
+   // })
+   // .catch(er => {
+   //   console.log(er)
+   // })
+
+// .catch(function(err){
+//      res.json({
+//          "success":false,
+//          "data":err
+//      })
+   methods.course.getAllCourses()
+    .then(re => {
+    	console.log(depts)
+    	console.log("hi")
+    	console.log(re)
+
+    	
+        // instead check if student has set preferences if yes , then return preference list as data
+        //Else send as data the courses that can be allocated
+        res.render('advisor',{title:'Setting preference',"data1" : re,"data":depts}) 
+    })
+    .catch(er => {
+        console.log(er)
+    })
+    .catch(function(err){
      res.json({
          "success":false,
          "data":err
      })
  })
+})
+
+
+
+
+ router.get('/preference',(req,res,next)=>{
+
+ methods.student.allowedCourses(req.body.regID)
+    .then(re => {
+        // instead check if student has set preferences if yes , then return preference list as data
+        //Else send as data the courses that can be allocated
+        res.render('advisor',{title:'Setting preference',data1 : re,student : req.body.regID}) 
+    })
+    .catch(er => {
+        console.log(er)
+    })
+})
 })
 
 
@@ -84,58 +121,100 @@ router.get('/',(req,res,next)=>{
     
   });
 
-router.post('/preference',(req,res)=>{
-    // methods.student.allowedCourses(req.body.regID)
-    // .then(re => {
-    //     // instead check if student has set preferences if yes , then return preference list as data
-    //     //Else send as data the courses that can be allocated
-    //     res.render('advisor',{title:'Setting preference',data1 : re,student : req.regID}) 
-    // })
-    // .catch(er => {
-    //     console.log(er)
-    // })
+// router.post('/preference',(req,res)=>{
+//     console.log(req.body);
+//     // console.log(req.decoded);
+//     methods.student.getStudentID(req.body.regID)
+//     .then(re=>{
+//         // console.log(re)
+//         var sid = re.dataValues.id;
+//         var preferences = req.body;
+//         console.log(preferences)
+//         var Preference = [];
+//         for (var pref in preferences){
+//             var level = parseInt(pref[pref.length-1])
+//             var cid = preferences[pref];
+//             var prefObj = {
+//                 courseID : cid,
+//                 studentID : sid,
+//                 preferenceLevel : level
+//             }
+//             Preference.push(prefObj);
+//         }
+//         methods.preference.addStudentPreference(Preference)
+//         .then(re2 => {
+//             // console.log(re2)
+//             res.render('advisor',{title:'Setting preference',data1 : re,student : req.body.ID})
+//             // res.redirect('/dashboard')
+//         })
+//         .catch(er2 => {
+//             console.log(er2)
+//         })
+//    })
+//     .catch(err => {
+//         console.log(err)
+//     })
     
-    console.log(req.body);
-    // console.log(req.decoded);
-   //  methods.student.getStudentID(req.body.regID)
-   //  .then(re=>{
-   //      // console.log(re)
-   //      var sid = re.dataValues.id;
-   //      var preferences = req.body;
-   //      console.log(preferences)
-   //      var Preference = [];
-   //      for (var pref in preferences){
-   //          var level = parseInt(pref[pref.length-1])
-   //          var cid = preferences[pref];
-   //          var prefObj = {
-   //              courseID : cid,
-   //              studentID : sid,
-   //              preferenceLevel : level
-   //          }
-   //          Preference.push(prefObj);
-   //      }
-   //      methods.preference.addStudentPreference(Preference)
-   //      .then(re2 => {
-   //          // console.log(re2)
-   //          res.redirect('/profile')
-   //      })
-   //      .catch(er2 => {
-   //          console.log(er2)
-   //      })
-   // })
-   //  .catch(err => {
-   //      console.log(err)
-   //  })
+// })
+
+
+
+
+
+
+// router.post('/preference',(req,res)=>{
+//     // methods.student.allowedCourses(req.body.regID)
+//     // .then(re => {
+//     //     // instead check if student has set preferences if yes , then return preference list as data
+//     //     //Else send as data the courses that can be allocated
+//     //     res.render('advisor',{title:'Setting preference',data1 : re,student : req.regID}) 
+//     // })
+//     // .catch(er => {
+//     //     console.log(er)
+//     // 
+// // })
     
-})
-// router.post('/addStudent', function(req, res, next) {
-//  	models.Student.create(req.body).then(result=>{
-//  		res.json(result)
-//  	})
-//  	.catch(err=>{
-//  		res.json(err)
-//  	})
-// });
+//     console.log(req.body);
+//     // console.log(req.decoded);
+//    //  methods.student.getStudentID(req.body.regID)
+//    //  .then(re=>{
+//    //      // console.log(re)
+//    //      var sid = re.dataValues.id;
+//    //      var preferences = req.body;
+//    //      console.log(preferences)
+//    //      var Preference = [];
+//    //      for (var pref in preferences){
+//    //          var level = parseInt(pref[pref.length-1])
+//    //          var cid = preferences[pref];
+//    //          var prefObj = {
+//    //              courseID : cid,
+//    //              studentID : sid,
+//    //              preferenceLevel : level
+//    //          }
+//    //          Preference.push(prefObj);
+//    //      }
+//    //      methods.preference.addStudentPreference(Preference)
+//    //      .then(re2 => {
+//    //          // console.log(re2)
+//    //          res.redirect('/profile')
+//    //      })
+//    //      .catch(er2 => {
+//    //          console.log(er2)
+//    //      })
+//    // })
+//    //  .catch(err => {
+//    //      console.log(err)
+//    //  })
+    
+// })
+// // router.post('/addStudent', function(req, res, next) {
+// //  	models.Student.create(req.body).then(result=>{
+// //  		res.json(result)
+// //  	})
+// //  	.catch(err=>{
+// //  		res.json(err)
+// //  	})
+// // });
  
  router.post('/addAdvisor',function(req,res,next){
 

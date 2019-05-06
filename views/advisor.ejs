@@ -175,29 +175,35 @@
  -->
 
 <div id="setPreference" class="tabcontent">
- <div class="group">
+<!--  <div class="group">
         <label>Registration ID</label>
       <input type="text" name="regID"><span class="highlight"></span><span class="bar"></span>
-    </div>
+    </div> -->
 
 
     <h3>Select your preferences</h3>
       <form method="POST" action = '/private/advisor/preference'>
 
+        <div class="group">
+        <label>Registration ID</label>
+      <input type="text" name="regID"><span class="highlight"></span><span class="bar"></span>
+    </div>
+
+
         <div class="div_demo">
             <div><font color="black" name="preference1">First preference   :  </font> 
               <select id="first" name = "preference1">
                 <option>Select your option</option>
-                <% for(var i=0; i < data.length; i++) { %>
-                  <option value ="<%= data[i].id %>"><%= data[i].name %> ---- <%= data[i].courseID %></option>
+                <% for(var i=0; i < data1.length; i++) { %>
+                  <option value ="<%= data1[i].id %>"><%= data1[i].name %> ---- <%= data1[i].courseID %></option>
               <% } %> 
               </select>
             </div>
         <div><font color="black" >Second preference:</font> 
           <select id="second" name="preference2">
             <option>Select your option</option>
-             <% for(var i=0; i < data.length; i++) { %>
-              <option value ="<%= data[i].id %>"><%= data[i].name %> ---- <%= data[i].courseID %></option>
+             <% for(var i=0; i < data1.length; i++) { %>
+              <option value ="<%= data1[i].id %>"><%= data1[i].name %> ---- <%= data1[i].courseID %></option>
                <% } %>  
 
           </select>
@@ -207,8 +213,8 @@
           <select id="third" name="preference3">
             <option>Select your option</option>  
             
-            <% for(var i=0; i < data.length; i++) { %>
-              <option value ="<%= data[i].id %>"><%= data[i].name %> ---- <%= data[i].courseID %></option>              
+            <% for(var i=0; i < data1.length; i++) { %>
+              <option value ="<%= data1[i].id %>"><%= data1[i].name %> ---- <%= data1[i].courseID %></option>              
           <% } %> 
           </select>
         </div>
