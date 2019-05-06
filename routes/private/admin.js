@@ -29,6 +29,17 @@ router.post('/addAdvisor',(req,res,next) => {
     })
 })
 
+// router.post('/addStudent',(req,res,next) => {
+//     console.log(req.body)
+//     methods.authentication.registerStudent(req.body)
+//     .then(re => {
+//         res.send(re)
+//     })
+//     .catch(er => {
+//         res.send(er)
+//     })
+// })
+
 router.post('/addCourse',(req,res,next) => {
     console.log(req.body)
     var new1=req.body
