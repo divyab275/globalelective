@@ -14,7 +14,7 @@ studentMethods = require('./student');
 preferenceMethods = require('./preference');
 allotmentMethods = require('./allotment')
 departmentMethods = require('./department')
-
+eventMethods = require('./event')
 // userID = "sdasd";
 // name = "sakhi";
 // password = "dasddf";
@@ -320,3 +320,11 @@ preferenceMethods.deletePreference("abc1",1,2,3)
 // .catch(err=>{
 //     console.log(err);
 // })
+
+eventMethods.setPreference()
+.then(res=>{
+    console.log(res);
+})
+.catch(err=>{
+    console.log(err);
+})
