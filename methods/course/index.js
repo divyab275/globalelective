@@ -100,4 +100,20 @@ courseMethods.getCourse = function(id){
   })
 }
 
+courseMethods.deleteCourse = function(id){
+  return new Promise((resolve,reject) => {
+    models.Course.destroy({
+      raw : true,
+      where : {
+        courseID : id
+      }})
+    .then(res => {
+      resolve(res)
+    })
+    .catch(err => {
+      reject(err)
+    })
+  })
+}
+
   module.exports = courseMethods;
