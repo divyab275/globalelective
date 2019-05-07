@@ -81,36 +81,76 @@
         </style>
 <div class="tab">
   <button class="tablinks" onclick="openCity(event, 'addStudent')">Add Student</button>
-  <button class="tablinks" onclick="openCity(event, 'viewPreference')">View/Edit Student preferences</button>
+   <button class="tablinks" onclick="openCity(event, 'changePasswordStudent')">Change Password- Student</button>
+  <button class="tablinks" onclick="openCity(event, 'setPreference')">Set student preferences</button>
 </div>
 
 <div id="addStudent" class="tabcontent">
   <h3>Add Student</h3>
   <br>
-  <form method="POST" action="/private/user/addUser">
+  <form method="POST" action="/private/advisor/addStudent">
+    
+     <div class="group">
+        <label>Registration ID</label>
+      <input type="text" name="regID"><span class="highlight"></span><span class="bar"></span>
+    </div>
+    
     <div class="group">
-        <label>Username</label>
-      <input type="text" name="username"><span class="highlight"></span><span class="bar"></span>
+        <label>Name</label>
+      <input type="text" name="name"><span class="highlight"></span><span class="bar"></span>
     </div>
     <div class="group">
         <label>Password</label>
       <input type="password" name="password"><span class="highlight"></span><span class="bar"></span>
     </div>
+    <div class="group">
+      Department<br>
+      <select name="deptID">
+          <% for(var i=0;i<data.length;i++) { %>
+        <option value=<%=data[i].id%>><%= data[i].name %> </option>
+        <% } %>
+      </select>
+    </div>
+<br>
+     <div class="group">
+        <label>CGPA</label>
+      <input type="number" step="0.00001" name="cgpa"><span class="highlight"></span><span class="bar"></span>
+    </div>
+
     <button type="submit" type="button" class="button buttonBlue">Add Student
       <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
     </button>
   </form>
 </div>
 
-<div id="viewPreference" class="tabcontent">
+
+<div id="changePasswordStudent" class="tabcontent">
+    <h3>Change Password - Student</h3>
+    <form method="POST" action = "/private/advisor/changePassword">
+        <div class="group">
+            Username<input type="text" name="userID">
+        </div>
+        <div class="group">
+              New Password<input type="password" name="password">
+        </div> 
+        <div class="group">
+            Confirm Password<input type="password" name="conf_password">
+      </div> 
+      <button type="submit" type="button" class="button buttonBlue">Submit
+     
+        </button>
+    </form>
+</div>
+
+<!-- <div id="viewPreference" class="tabcontent">
   <h3>View/Edit Preference</h3>
   <br>
 
-  <form method="GET">  
+  <form method="GET">  --> 
 
 <!-- insert action to list preference according to the student selected -->
 
-<h4>Select Student</h4>
+<!-- <h4>Select Student</h4>
   <div>
     <select id="first" onChange="myFunction()">
       <option>Select your option</option>
@@ -132,6 +172,52 @@
     </ol>
     <button class="button buttonBlue">Edit</button>
 </div>
+ -->
+
+<div id="setPreference" class="tabcontent">
+<!--  <div class="group">
+        <label>Registration ID</label>
+      <input type="text" name="regID"><span class="highlight"></span><span class="bar"></span>
+    </div> -->
+
+
+    <h3>Select your preferences</h3>
+      <form method="POST" action = '/private/advisor/preference'>
+
+        <div class="group">
+        <label>Registration ID</label>
+      <input type="text" name="regID"><span class="highlight"></span><span class="bar"></span>
+    </div>
+
+
+        <div class="div_demo">
+            <div><font color="black" name="preference1">First preference   :  </font> 
+              <select id="first" name = "preference1">
+                <option>Select your option</option>
+                <% for(var i=0; i < data1.length; i++) { %>
+                  <option value ="<%= data1[i].id %>"><%= data1[i].name %> ---- <%= data1[i].courseID %></option>
+              <% } %> 
+              </select>
+            </div>
+        <div><font color="black" >Second preference:</font> 
+          <select id="second" name="preference2">
+            <option>Select your option</option>
+             <% for(var i=0; i < data1.length; i++) { %>
+              <option value ="<%= data1[i].id %>"><%= data1[i].name %> ---- <%= data1[i].courseID %></option>
+               <% } %>  
+
+          </select>
+        </div>
+
+         <div><font color="black">Third preference   :  </font> 
+          <select id="third" name="preference3">
+            <option>Select your option</option>  
+            
+            <% for(var i=0; i < data1.length; i++) { %>
+              <option value ="<%= data1[i].id %>"><%= data1[i].name %> ---- <%= data1[i].courseID %></option>              
+          <% } %> 
+          </select>
+        </div>
 
 <!-- after edit button is clicked, the preference list should 
     change and load menu similar to student dash -->

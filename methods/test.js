@@ -101,7 +101,22 @@ departmentMethods = require('./department')
 // })
 
 // courseMethods.addCourse({
-//     courseID : 'E10',
+//     courseID : 'C01',
+//     name : 'CN',
+//     capacity : 100,
+//     filled : 0,
+//     deptID : 1
+// })
+// .then(res=>{
+//     console.log(res);
+// })
+// .catch(err=>{
+//     console.log(err);
+// })
+
+
+// courseMethods.addCourse({
+//     courseID : 'C01',
 //     name : 'CN',
 //     capacity : 100,
 //     filled : 0,

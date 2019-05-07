@@ -39,7 +39,7 @@ router.post('/login',(req,res,next)=>{
         if(result.privilege == 'Admin')
             res.redirect('/private/admin/dashboard')
         else if(result.privilege == 'Advisor')
-            res.redirect('/private/advisordashboard')
+            res.redirect('/private/advisor/dashboard')
         else if(result.privilege == "Student")
             res.redirect('/private/student')
         

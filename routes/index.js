@@ -62,6 +62,9 @@ router.get('/private/advisordashboard',(req,res,next)=>{
   res.render('advisor',{title:'advisor'})
   
 })
+
+
+
 router.get('/private/admin/dashboard',(req,res,next)=>{
   methods.department.getDepts().then(function(result){
    //console.log("From routes");
@@ -90,6 +93,8 @@ router.get('/private/admin/dashboard',(req,res,next)=>{
                     
 })
 // router.get('/private/admin')
+
+
 
 router.get('/allotmentlist',(req,res) => {
   methods.allotment.getAllotmentList()
