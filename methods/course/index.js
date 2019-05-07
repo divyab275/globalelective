@@ -82,4 +82,22 @@ courseMethods.getCourses = function(){
   })
 }
 
+courseMethods.getCourse = function(id){
+  return new Promise((resolve,reject) => {
+    models.Course.findOne({
+      raw : true,
+      where : {
+        id : id
+      },
+      attributes : ['courseID','name']
+    })
+    .then(res => {
+      resolve(res)
+    })
+    .catch(err => {
+      reject(err)
+    })
+  })
+}
+
   module.exports = courseMethods;

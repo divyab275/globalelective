@@ -148,5 +148,47 @@ allotmentMethods.getAllotmentList = function(){
 }
 
 
+allotmentMethods.getAllotment = function(studentID){
+    return new Promise((resolve,reject) => {
+        models.Student.findOne({
+            raw : true,
+            where : {
+                regID : studentID
+            },
+            attributes : ['id']
+        })
+        .then(r => {
+      
+            models.Allotment.findOne({
+                raw : true,
+                where : {
+                    studentID : r.id
+                },
+                attributes : ['courseID','studentID']
+            })
+            .then(res => {
+                if(!res)
+                    resolve(res)
+                courseMethods.getCourse(res.courseID)
+                .then(re => {
+                    resolve(re)
+                })
+                .catch(er =>{
+    
+                })
+                
+            })
+            .catch(err => {
+                reject(err)
+            })
+        })
+        .catch(err => {
+
+        })
+        
+    })
+    
+}
+
 
 module.exports = allotmentMethods

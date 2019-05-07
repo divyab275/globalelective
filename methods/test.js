@@ -100,19 +100,19 @@ departmentMethods = require('./department')
 //     console.log(err)
 // })
 
-courseMethods.addCourse({
-    courseID : 'C01',
-    name : 'CN',
-    capacity : 100,
-    filled : 0,
-    deptID : 1
-})
-.then(res=>{
-    console.log(res);
-})
-.catch(err=>{
-    console.log(err);
-})
+// courseMethods.addCourse({
+//     courseID : 'E10',
+//     name : 'CN',
+//     capacity : 100,
+//     filled : 0,
+//     deptID : 1
+// })
+// .then(res=>{
+//     console.log(res);
+// })
+// .catch(err=>{
+//     console.log(err);
+// })
 
 
 // courseMethods.addCourse({
@@ -280,4 +280,20 @@ courseMethods.addCourse({
 // })
 // .catch(err => {
 //     console.log(err)
+// })
+
+allotmentMethods.getAllotment('stud3')
+.then(res=>{
+    console.log(res);
+})
+.catch(err=>{
+    console.log(err);
+})
+
+// courseMethods.getCourse(1)
+// .then(res=>{
+//     console.log(res);
+// })
+// .catch(err=>{
+//     console.log(err);
 // })

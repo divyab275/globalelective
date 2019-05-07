@@ -12,11 +12,20 @@
   <script>
     var a=1, msg;
     student_marked_prefernce = false
+    if(a==1){
+      // console.log("<span>" +"<%= allotment.courseID %>"+"ajsnksaj</span>")
+     document.getElementById('alloted').innerHTML = "<span>" +"<%= allotment.courseID %>"+"ajsnksaj</span>"
+     $('#alloted').append( "<span>" +"<%= allotment.courseID %>"+"</span>")
+     console.log($('#alloted'))
+    //   $('#viewAllottedCourse').append( "<span>" +"<%= allotment.courseID %>"+"</span>")
+    // $('#viewAllottedCourse').append("<span>" +"<%= allotment.name %>" + "</span>")
+    }
+    
     // if(a==1)
     //   msg="Allotment is still under process"
     // else if(a==0)
     //   msg="You have been allotted to the course"
-    console.log("<%= student %>")
+    // console.log("<%= student %>")
     // methods.student.hasMarkedPreference(student.studentID)
     // .then(res => {
     //   if(res.length==0)
@@ -225,9 +234,10 @@
 
 <div id="viewAllottedCourse" class="tabcontent">
   <h3>Allotted Course</h3>
-    <script>
-        document.write(msg)
-    </script>  
+    <div id='alloted'>
+
+    </div>
+    
 </div>
 </div>
 </body>
