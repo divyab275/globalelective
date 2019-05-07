@@ -35,11 +35,17 @@
     function acceptPreferences() {
         var checkbox = document.getElementById('prefButton')
         if(checkbox.checked != true){
-          console.log(axios)
+          axios.get('/private/admin/eventUnSetPreference')
+          .then(res => {
+              console.log(res)
+          })
+          .catch(err => {
+            console.log(err)
+          })
         }
           
         else  {
-          axios.get('/private/admin/eventPreference')
+          axios.get('/private/admin/eventSetPreference')
           .then(res => {
               console.log(res)
           })
@@ -176,11 +182,7 @@
   
 <br><br>
 
-  Allowing Modifications by Staff Advisor
-  <label class="switch">
-      <input type="checkbox">
-      <span class="slider round"></span>
-    </label>
+ 
     <br><br>
     <button type="button" class="button buttonBlue" ><a href="/private/admin/allot">Perform Allotment</a>
      </button>

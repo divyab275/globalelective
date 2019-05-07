@@ -9,6 +9,7 @@
   crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="javascript" type="text/javascript" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script>
     window.onload = function(){
       if('<%= allotment %>'== "null"){
@@ -19,7 +20,21 @@
         document.getElementById('courseCode').innerHTML='<%= allotment.courseID %>'
         document.getElementById('courseName').innerHTML='<%= allotment.name %>'
       }
-     
+      axios.get('/event/getAll')
+      .then(res => {
+        if(res.data.length != 0 && res.data[0].flag == 1){
+          console.log("accepting preferences")
+          document.getElementById('pref').disabled = false
+
+        }
+        else{
+          console.log("not Accepting student preferences")
+          document.getElementById('pref').disabled = true
+        }
+      })
+      .catch(err => {
+        console.log(err)
+      })
     }
    
     
@@ -118,6 +133,10 @@
   color:#fff;
 } 
 
+#pref:disabled {
+  background-color : #A9A9A9
+}
+
 
 </style>
 
@@ -205,7 +224,7 @@
 
          <div>
 
-        <button type="submit" class="button buttonBlue">Submit
+        <button id ="pref" type="submit" class="button buttonBlue">Submit
             <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
         </button>
       </div>

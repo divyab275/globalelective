@@ -314,10 +314,18 @@ eventMethods = require('./event')
 //     console.log(err);
 // })
 
-eventMethods.setPreference()
+eventMethods.unsetPreference()
 .then(res=>{
     console.log(res);
 })
 .catch(err=>{
     console.log(err);
 })
+
+// eventMethods.unsetPreference()
+// .then(res=>{
+//     console.log(res);
+// })
+// .catch(err=>{
+//     console.log(err);
+// })
