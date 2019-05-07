@@ -75,10 +75,11 @@ departmentMethods = require('./department')
 // })
 
 // authMethods.registerStudent({
-//     regID : 'stud3',
-//     name : 'swathi',
+//     regID : 'stud5',
+//     name : 'nakki',
 //     password : 'stud3',
-//     cgpa : 9.8
+//     cgpa : 9.8,
+//     deptID : 1,
 // })
 // .then(res=>{
 //     console.log(res);
@@ -188,13 +189,13 @@ departmentMethods = require('./department')
 //     console.log(err)
 // })
 
-courseMethods.getAllCourseDetails()
-.then(res => {
-    console.log(res)
-})
-.catch(err => {
-    console.log(err)
-})
+// courseMethods.getAllCourseDetails()
+// .then(res => {
+//     console.log(res)
+// })
+// .catch(err => {
+//     console.log(err)
+// })
 
 // allotmentMethods.allot()
 // .then(res =>{
@@ -204,13 +205,13 @@ courseMethods.getAllCourseDetails()
 //     console.log(err)
 // })
 
-studentMethods.allowedCourses('stud4')
-.then(res => {
-    console.log(res)
-})
-.catch(err => {
-    console.log(err)
-})
+// studentMethods.allowedCourses('stud4')
+// .then(res => {
+//     console.log(res)
+// })
+// .catch(err => {
+//     console.log(err)
+// })
 
 // departmentMethods.getCoursesElligibleForDept([2])
 // .then( res=> {
