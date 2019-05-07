@@ -23,10 +23,61 @@ const Op = Sequelize.Op;
     
 }
 
+preferenceMethods.deletePreference = function(studID,pref1,pref2,pref3){
+  return new Promise((resolve,reject)=>{
+    studentMethods.getStudentID(studID)
+    .then(res => {
+            student=res
+            console.log(pref1);
+            models.Preference.destroy({
+                where:{
+                  id:student.id
+                }
+            })
+            .then(res1 =>{
+              var update = []
+              var pref={}
+              pref['courseID']=pref1
+              pref['preferenceLevel']=1
+              pref['studentID']=student.id
+              update.push(pref);
 
-preferenceMethods.updatePreferences = function(studID,pref1,pref2,pref3){
+              pref['courseID']=pref2
+              pref['preferenceLevel']=2
+              pref['studentID']=student.id
+              update.push(pref);
+              
+              pref['courseID']=pref3
+              pref['preferenceLevel']=3
+              pref['studentID']=student.id
+              update.push(pref);
 
+              preferenceMethods.addStudentPreference(update)
+              .then(res2 =>{
+                resolve(res2);
+              })
+              .catch(er1=>{
+                reject(er1);
+              })
+            })
+            .catch(er=>{
+              reject(er);
+            })
+    }).catch(err => {
+      reject(err);
+    }
+    )
+  })
 }
+/*preferenceMethods.updatePreferences = function(studID,pref1,pref2,pref3){
+  return new Promise((resolve,reject)=>{
+    studentMethods.getStudentID(studID)
+    .then(res => {
+            student = res
+            models.Preference.update({})
+  })
+
+}*/
 
 preferenceMethods.getPreferences = function(){
   return new Promise((resolve,reject) => {

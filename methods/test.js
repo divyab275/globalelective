@@ -171,7 +171,14 @@ departmentMethods = require('./department')
 // .catch(err => {
 //     console.log(err)
 // })
+preferenceMethods.deletePreference("abc1",1,2,3)
+.then(res=>{
+	console.log(res);
 
+})
+.catch(err=>{
+	console.log(err);
+})
 // preferenceMethods.getStudentPreferences([7,6])
 // .then(res => {
 //     console.log(res)
