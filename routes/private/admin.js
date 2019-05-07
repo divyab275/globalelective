@@ -74,7 +74,7 @@ router.post('/changePassword',(req,res,next) => {
     })
 })
 
-<<<<<<< HEAD
+// <<<<<<< HEAD
 router.get('/eventSetPreference',(req,res,next) => {
     methods.event.setPreference()
     .then(re => {
@@ -82,7 +82,9 @@ router.get('/eventSetPreference',(req,res,next) => {
     })
     .catch(er => {
         res.send(er)
-=======
+    })
+})
+// =======
 router.post('/deleteCourse',(req,res,next) => {
     console.log("id:",req.body.name)
     console.log("courseid:",req.body.courseID)
@@ -92,7 +94,7 @@ router.post('/deleteCourse',(req,res,next) => {
     })
     .catch(er => {
         res.send({success:false,error:er})
->>>>>>> 711bc4fda3e767a38a0f944919b144ad96155754
+// >>>>>>> 711bc4fda3e767a38a0f944919b144ad96155754
     })
 })
 

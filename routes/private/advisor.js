@@ -221,7 +221,7 @@ router.post('/changePassword',(req,res,next) => {
 
  router.post('/preference',(req,res,next) => {
      console.log(req.body)
-     methods.preference.updatePreferences(req.body.regID,req.body.preference1,req.body.preference2,req.body.preference3)
+     methods.preference.deletePreference(req.body.regID,req.body.preference1,req.body.preference2,req.body.preference3)
      .then(re => {
         res.json({success : true })
      })

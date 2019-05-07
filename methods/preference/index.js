@@ -31,26 +31,28 @@ preferenceMethods.deletePreference = function(studID,pref1,pref2,pref3){
             console.log(pref1);
             models.Preference.destroy({
                 where:{
-                  id:student.id
+                  studentID:student.id
                 }
             })
             .then(res1 =>{
               var update = []
-              var pref={}
-              pref['courseID']=pref1
-              pref['preferenceLevel']=1
-              pref['studentID']=student.id
-              update.push(pref);
+              var prefa={}
+              prefa['courseID']=pref1
+              prefa['preferenceLevel']=1
+              prefa['studentID']=student.id
+              update.push(prefa);
 
-              pref['courseID']=pref2
-              pref['preferenceLevel']=2
-              pref['studentID']=student.id
-              update.push(pref);
-              
-              pref['courseID']=pref3
-              pref['preferenceLevel']=3
-              pref['studentID']=student.id
-              update.push(pref);
+              var prefb={}
+              prefb['courseID']=pref2
+              prefb['preferenceLevel']=2
+              prefb['studentID']=student.id
+              update.push(prefb);
+
+              var prefc={}
+              prefc['courseID']=pref3
+              prefc['preferenceLevel']=3
+              prefc['studentID']=student.id
+              update.push(prefc);
 
               preferenceMethods.addStudentPreference(update)
               .then(res2 =>{

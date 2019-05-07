@@ -172,7 +172,7 @@ eventMethods = require('./event')
 // .catch(err => {
 //     console.log(err)
 // })
-preferenceMethods.deletePreference("abc1",1,2,3)
+preferenceMethods.deletePreference("abc1",8,9,10)
 .then(res=>{
 	console.log(res);
 
