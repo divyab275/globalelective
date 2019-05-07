@@ -9,6 +9,7 @@
   crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="javascript" type="text/javascript" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <link rel="javascript" type="text/javascript" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script>
    function openCity(evt, cityName) {
@@ -31,6 +32,24 @@
         document.getElementById(cityName).style.display = "block";
         evt.currentTarget.className += " active";
       }
+    function acceptPreferences() {
+        var checkbox = document.getElementById('prefButton')
+        if(checkbox.checked != true){
+          console.log(axios)
+        }
+          
+        else  {
+          axios.get('/private/admin/eventPreference')
+          .then(res => {
+              console.log(res)
+          })
+          .catch(err => {
+            console.log(err)
+          })
+        }
+          
+    }  
+     
       </script>
 </head>
 
@@ -151,7 +170,7 @@
 
   Accepting Student Preferences
 <label class="switch">
-    <input type="checkbox">
+    <input type="checkbox" onclick="acceptPreferences()" id = "prefButton">
     <span class="slider round"></span>
   </label>
   

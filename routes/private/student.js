@@ -10,8 +10,13 @@ router.get('/',(req,res,next)=>{
         .then(re => {
             // instead check if student has set preferences if yes , then return preference list as data
             //Else send as data the courses that can be allocated
-            //console.log(re)
-            res.render('student',{title:'Setting preference', data : re,student : req.userID, allotment : res2}) 
+            // console.log(re)
+            // console.log(res2)
+            if(res2== null){
+                res.render('student',{title:'Setting preference', data : re,student : req.userID, allotment : "null"})
+            }
+            else
+                res.render('student',{title:'Setting preference', data : re,student : req.userID, allotment : res2}) 
         }) 
         .catch(er => {
             console.log(er)

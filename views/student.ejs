@@ -10,35 +10,20 @@
   <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="javascript" type="text/javascript" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
   <script>
-    var a=1, msg;
-    student_marked_prefernce = false
-    if(a==1){
-      // console.log("<span>" +"<%= allotment.courseID %>"+"ajsnksaj</span>")
-     document.getElementById('alloted').innerHTML = "<span>" +"<%= allotment.courseID %>"+"ajsnksaj</span>"
-     $('#alloted').append( "<span>" +"<%= allotment.courseID %>"+"</span>")
-     console.log($('#alloted'))
-    //   $('#viewAllottedCourse').append( "<span>" +"<%= allotment.courseID %>"+"</span>")
-    // $('#viewAllottedCourse').append("<span>" +"<%= allotment.name %>" + "</span>")
+    window.onload = function(){
+      if('<%= allotment %>'== "null"){
+        document.getElementById('courseCode').innerHTML = "Not alloted yet"
+        
+      }
+      else{
+        document.getElementById('courseCode').innerHTML='<%= allotment.courseID %>'
+        document.getElementById('courseName').innerHTML='<%= allotment.name %>'
+      }
+     
     }
+   
     
-    // if(a==1)
-    //   msg="Allotment is still under process"
-    // else if(a==0)
-    //   msg="You have been allotted to the course"
-    // console.log("<%= student %>")
-    // methods.student.hasMarkedPreference(student.studentID)
-    // .then(res => {
-    //   if(res.length==0)
-    //     student_marked_prefernce = false
-    //   else{
-    //     document.getElementById('a').display = "none"
-    //   }
-    // })
-    // .catch(err => {
-
-    // })
-
-   function openCity(evt, cityName) {
+    function openCity(evt, cityName) {
         // Declare all variables
         var i, tabcontent, tablinks;
       
@@ -234,10 +219,12 @@
 
 <div id="viewAllottedCourse" class="tabcontent">
   <h3>Allotted Course</h3>
-    <div id='alloted'>
+    <span id='courseCode'>
 
-    </div>
-    
+    </span>
+    <span id = "courseName">
+
+    </span>
 </div>
 </div>
 </body>

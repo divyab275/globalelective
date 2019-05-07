@@ -104,18 +104,18 @@ router.post('/changePassword',(req,res,next) => {
     })
 })
 
-router.get('/',(req,res,next)=>{
-    methods.student.allowedCourses(req.userID)
-    .then(re => {
-        // instead check if student has set preferences if yes , then return preference list as data
-        //Else send as data the courses that can be allocated
-        res.render('student',{title:'Setting preference',data : re,student : req.userID}) 
-    })
-    .catch(er => {
-        console.log(er)
-    })
+// router.get('/',(req,res,next)=>{
+//     methods.student.allowedCourses(req.userID)
+//     .then(re => {
+//         // instead check if student has set preferences if yes , then return preference list as data
+//         //Else send as data the courses that can be allocated
+//         res.render('student',{title:'Setting preference',data : re,student : req.userID}) 
+//     })
+//     .catch(er => {
+//         console.log(er)
+//     })
     
-  });
+//   });
 
 // router.post('/preference',(req,res)=>{
 //     console.log(req.body);

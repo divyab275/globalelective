@@ -14,7 +14,7 @@ studentMethods = require('./student');
 preferenceMethods = require('./preference');
 allotmentMethods = require('./allotment')
 departmentMethods = require('./department')
-
+eventMethods = require('./event')
 // userID = "sdasd";
 // name = "sakhi";
 // password = "dasddf";
@@ -188,13 +188,13 @@ departmentMethods = require('./department')
 //     console.log(err)
 // })
 
-courseMethods.getAllCourseDetails()
-.then(res => {
-    console.log(res)
-})
-.catch(err => {
-    console.log(err)
-})
+// courseMethods.getAllCourseDetails()
+// .then(res => {
+//     console.log(res)
+// })
+// .catch(err => {
+//     console.log(err)
+// })
 
 // allotmentMethods.allot()
 // .then(res =>{
@@ -204,13 +204,13 @@ courseMethods.getAllCourseDetails()
 //     console.log(err)
 // })
 
-studentMethods.allowedCourses('stud4')
-.then(res => {
-    console.log(res)
-})
-.catch(err => {
-    console.log(err)
-})
+// studentMethods.allowedCourses('stud4')
+// .then(res => {
+//     console.log(res)
+// })
+// .catch(err => {
+//     console.log(err)
+// })
 
 // departmentMethods.getCoursesElligibleForDept([2])
 // .then( res=> {
@@ -312,3 +312,11 @@ studentMethods.allowedCourses('stud4')
 // .catch(err=>{
 //     console.log(err);
 // })
+
+eventMethods.setPreference()
+.then(res=>{
+    console.log(res);
+})
+.catch(err=>{
+    console.log(err);
+})
