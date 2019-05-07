@@ -21,7 +21,8 @@ router.post('/addStudent',(req,res,next) => {
     console.log(req.body)
     methods.authentication.registerStudent(req.body)
     .then(re => {
-        res.send(re)
+        // res.send(respon)
+        res.redirect('/private/advisor/dashboard')
     })
     .catch(er => {
         res.send(er)
@@ -97,7 +98,8 @@ router.get('/dashboard',(req,res,next)=>{
 router.post('/changePassword',(req,res,next) => {
     methods.user.changePassword(req.body.userID,req.body.password)
     .then(re => {
-        res.redirect('/private/advisor/dashboard') //Make redirection to another page saying password change successful
+        res.redirect('/private/advisor/dashboard')
+         //Make redirection to another page saying password change successful
     })
     .catch(er => {
         res.send({success:false,error:er})

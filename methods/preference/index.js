@@ -23,9 +23,10 @@ const Op = Sequelize.Op;
     
 }
 
-// preferenceMethods.updatePreferences = function(studID,newPreferences){
 
-// }
+preferenceMethods.updatePreferences = function(studID,pref1,pref2,pref3){
+
+}
 
 preferenceMethods.getPreferences = function(){
   return new Promise((resolve,reject) => {

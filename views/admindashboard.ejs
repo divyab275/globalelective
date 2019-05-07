@@ -226,17 +226,18 @@
       <tr>
         <th>Course Code</th>
         <th>Course Name</th>
-        <th>Edit </th>
+        <!-- <th>Edit </th> -->
         <th>Delete</th>
       </tr>
       <% for(var i=0;i<course.length;i++) { %>
         <tr>
           <form method = "POST" action="/private/admin/deleteCourse">
-              <td><%= course[i].courseID %></td>
-          <td><%= course[i].name %></td>
-          <td><i class="fa fa-pencil" aria-hidden="true" style="font-size: 50px;"></i>
-          </td>
-          <td><a href = "/private/admin/deleteCourse"><img src="../img/pencil-edit-button.png" ></a></td>
+              <td><input type="hidden" name="courseID" value="<%= course[i].courseID %>"><%= course[i].courseID %></td>
+          <td><input type="hidden" name="name" value="<%= course[i].name %>"><%= course[i].name %></td>
+          <!-- <td><a href = "/private/admin/deleteCourse"><button>Delete</button></a></td> -->
+          <td><input type="submit" value="Delete"></td>
+
+          
           </form>
           
         </tr>

@@ -75,10 +75,11 @@ eventMethods = require('./event')
 // })
 
 // authMethods.registerStudent({
-//     regID : 'stud3',
-//     name : 'swathi',
+//     regID : 'stud5',
+//     name : 'nakki',
 //     password : 'stud3',
-//     cgpa : 9.8
+//     cgpa : 9.8,
+//     deptID : 1,
 // })
 // .then(res=>{
 //     console.log(res);
