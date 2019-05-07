@@ -188,13 +188,13 @@ departmentMethods = require('./department')
 //     console.log(err)
 // })
 
-// courseMethods.getAllCourseDetails()
-// .then(res => {
-//     console.log(res)
-// })
-// .catch(err => {
-//     console.log(err)
-// })
+courseMethods.getAllCourseDetails()
+.then(res => {
+    console.log(res)
+})
+.catch(err => {
+    console.log(err)
+})
 
 // allotmentMethods.allot()
 // .then(res =>{
@@ -204,13 +204,13 @@ departmentMethods = require('./department')
 //     console.log(err)
 // })
 
-// studentMethods.allowedCourses('stud4')
-// .then(res => {
-//     console.log(res)
-// })
-// .catch(err => {
-//     console.log(err)
-// })
+studentMethods.allowedCourses('stud4')
+.then(res => {
+    console.log(res)
+})
+.catch(err => {
+    console.log(err)
+})
 
 // departmentMethods.getCoursesElligibleForDept([2])
 // .then( res=> {
@@ -297,13 +297,13 @@ departmentMethods = require('./department')
 //     console.log(err)
 // })
 
-allotmentMethods.getAllotment('stud3')
-.then(res=>{
-    console.log(res);
-})
-.catch(err=>{
-    console.log(err);
-})
+// allotmentMethods.getAllotment('stud3')
+// .then(res=>{
+//     console.log(res);
+// })
+// .catch(err=>{
+//     console.log(err);
+// })
 
 // courseMethods.getCourse(1)
 // .then(res=>{

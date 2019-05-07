@@ -23,6 +23,10 @@ const Op = Sequelize.Op;
     
 }
 
+// preferenceMethods.updatePreferences = function(studID,newPreferences){
+
+// }
+
 preferenceMethods.getPreferences = function(){
   return new Promise((resolve,reject) => {
     models.Preference.findAll({

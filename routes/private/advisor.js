@@ -4,9 +4,9 @@ var models = require('../../models');
 var methods = require('../../methods');
  
 
-// router.get('/', function(req, res, next) {
-//  res.send("Hello")
-// });
+router.get('/', function(req, res, next) {
+ res.send("Hello")
+});
  
  router.post('/create',(req,res,next)=>{
     info={};
@@ -58,16 +58,12 @@ router.get('/dashboard',(req,res,next)=>{
 //          "success":false,
 //          "data":err
 //      })
-   methods.course.getAllCourses()
+   methods.course.getAllCourseDetails()
     .then(re => {
-    	console.log(depts)
-    	console.log("hi")
-    	console.log(re)
-
-    	
+    		
         // instead check if student has set preferences if yes , then return preference list as data
         //Else send as data the courses that can be allocated
-        res.render('advisor',{title:'Setting preference',"data1" : re,"data":depts}) 
+        res.render('advisor',{title:'Setting preference',data1 : re,data:depts}) 
     })
     .catch(er => {
         console.log(er)
@@ -218,6 +214,19 @@ router.get('/',(req,res,next)=>{
  
  router.post('/addAdvisor',function(req,res,next){
 
+ })
+
+
+ router.post('/preference',(req,res,next) => {
+     console.log(req.body)
+     methods.preference.updatePreferences(req.body.regID,req.body.preference1,req.body.preference2,req.body.preference3)
+     .then(re => {
+        res.json({success : true })
+     })
+     .catch(err => {
+         res.send(err)
+     })
+     
  })
 
 

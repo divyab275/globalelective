@@ -10,6 +10,7 @@
   <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="javascript" type="text/javascript" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
   <script>
+    console.log('<%= Object.keys(data1) %>')
    function openCity(evt, cityName) {
         // Declare all variables
         var i, tabcontent, tablinks;
@@ -179,7 +180,7 @@
         <label>Registration ID</label>
       <input type="text" name="regID"><span class="highlight"></span><span class="bar"></span>
     </div> -->
-
+    
 
     <h3>Select your preferences</h3>
       <form method="POST" action = '/private/advisor/preference'>
@@ -194,16 +195,19 @@
             <div><font color="black" name="preference1">First preference   :  </font> 
               <select id="first" name = "preference1">
                 <option>Select your option</option>
-                <% for(var i=0; i < data1.length; i++) { %>
-                  <option value ="<%= data1[i].id %>"><%= data1[i].name %> ---- <%= data1[i].courseID %></option>
-              <% } %> 
+                <% keys = Object.keys(data1)
+                for(var i=0; i < keys.length ; i++) { %>
+              <option value ="<%= keys[i] %>"><%= data1[keys[i]][0] %> ---- <%= data1[keys[i]][1] %></option>
+               <% } %>  
+
               </select>
             </div>
         <div><font color="black" >Second preference:</font> 
           <select id="second" name="preference2">
             <option>Select your option</option>
-             <% for(var i=0; i < data1.length; i++) { %>
-              <option value ="<%= data1[i].id %>"><%= data1[i].name %> ---- <%= data1[i].courseID %></option>
+             <% keys = Object.keys(data1)
+                for(var i=0; i < keys.length ; i++) { %>
+              <option value ="<%= keys[i] %>"><%= data1[keys[i]][0] %> ---- <%= data1[keys[i]][1] %></option>
                <% } %>  
 
           </select>
@@ -212,10 +216,11 @@
          <div><font color="black">Third preference   :  </font> 
           <select id="third" name="preference3">
             <option>Select your option</option>  
-            
-            <% for(var i=0; i < data1.length; i++) { %>
-              <option value ="<%= data1[i].id %>"><%= data1[i].name %> ---- <%= data1[i].courseID %></option>              
-          <% } %> 
+            <% keys = Object.keys(data1)
+            for(var i=0; i < keys.length ; i++) { %>
+          <option value ="<%= keys[i] %>"><%= data1[keys[i]][0] %> ---- <%= data1[keys[i]][1] %></option>
+           <% } %>  
+
           </select>
         </div>
 
@@ -223,6 +228,7 @@
     change and load menu similar to student dash -->
 
 </div>
-
+<button type="submit">Edit</button>
+</form>
 </body>
 </html>
