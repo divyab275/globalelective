@@ -94,4 +94,19 @@ router.get('/eventUnSetPreference',(req,res,next) => {
     })
 })
 
+router.post('/deleteCourse',(req,res,next) => {
+    console.log("id:",req.body.name)
+    console.log("courseid:",req.body.courseID)
+    methods.course.deleteCourse(req.body.courseID,)
+    .then(re => {
+        res.redirect('/private/admin/dashboard') //Make redirection to another page saying password change successful
+    })
+    .catch(er => {
+        res.redirect('/private/admin/dashboard')
+    })
+})
+
+
+
+
 module.exports = router
