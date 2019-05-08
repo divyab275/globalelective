@@ -6,12 +6,12 @@ var models=require('../models')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  if(req.session.token){
-    //Token already present , destroy
-    req.session.destroy(function(){
-      console.log("user logged out.")
-   });
-  }
+  // if(req.session.token){
+  //   //Token already present , destroy
+  //   req.session.destroy(function(){
+  //     console.log("user logged out.")
+  //  });
+  // }
   
   res.render('login', { title: 'Login' });
 });
