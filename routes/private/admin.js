@@ -74,4 +74,24 @@ router.post('/changePassword',(req,res,next) => {
     })
 })
 
+router.get('/eventSetPreference',(req,res,next) => {
+    methods.event.setPreference()
+    .then(re => {
+        res.send(re)
+    })
+    .catch(er => {
+        res.send(er)
+    })
+})
+
+router.get('/eventUnSetPreference',(req,res,next) => {
+    methods.event.unsetPreference()
+    .then(re => {
+        res.send(re)
+    })
+    .catch(er => {
+        res.send(er)
+    })
+})
+
 module.exports = router

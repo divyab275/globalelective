@@ -51,7 +51,7 @@ router.use('/users',require('./users'))
 router.use('/departments',require('./department'))
 router.use('/students',require('./student'))
 router.use('/allotment',require('./allotment'))
-
+router.use('/event',require('./event'))
 // router.use('/users',require('./user'))
 router.use('/register',require('./register'))
 router.use('/private',auth,require('./private'))
