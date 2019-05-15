@@ -7,9 +7,6 @@ router.get('/', function(req, res, next) {
  res.send("Hello")
 });
  
- 
-
- 
  router.post('/addUser',function(req,res,next){
    
      info = req.body

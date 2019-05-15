@@ -100,23 +100,23 @@
         <label>Name</label>
       <input type="text" name="name"><span class="highlight"></span><span class="bar"></span>
     </div>
-    <div class="group">
+  
         <label>Password</label>
-      <input type="password" name="password"><span class="highlight"></span><span class="bar"></span>
-    </div>
+      <input type="password" name="password" style="width:40%;"><span class="highlight"></span><span class="bar"></span>
+    
+      <label>CGPA</label>
+    <input type="number" step="0.00001" name="cgpa"  style="width:20%;"><span class="highlight"></span><span class="bar"></span>
+
     <div class="group">
       Department<br>
-      <select name="deptID">
+      <select name="deptID" style="width:40%;">
           <% for(var i=0;i<data.length;i++) { %>
         <option value=<%=data[i].id%>><%= data[i].name %> </option>
         <% } %>
       </select>
     </div>
 <br>
-     <div class="group">
-        <label>CGPA</label>
-      <input type="number" step="0.00001" name="cgpa"><span class="highlight"></span><span class="bar"></span>
-    </div>
+    
 
     <button type="submit" type="button" class="button buttonBlue">Add Student
       <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
