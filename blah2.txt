@@ -1095,12 +1095,3 @@ ennode kali
 ennode kali
 ennode kali
 ennode kali
-ennode kali
-ennode kali
-ennode kali
-ennode kali
-ennode kali
-ennode kali
-ennode kali
-ennode kali
-ennode kali
